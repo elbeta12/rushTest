@@ -5,36 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Liga Rushbet 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getDatabase, ref, onValue, set, push, update, remove, get }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-           signOut, onAuthStateChanged, updateProfile }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-  const firebaseConfig = {
+<!-- Firebase compat (global scope, no módulos ES) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script>
+  firebase.initializeApp({
     apiKey: "AIzaSyDH-ODpz5XS0vYF-KGzf1v1q0t_jtCH2qY",
     authDomain: "datos-53cd1.firebaseapp.com",
     databaseURL: "https://datos-53cd1-default-rtdb.firebaseio.com/",
     projectId: "datos-53cd1",
     storageBucket: "datos-53cd1.appspot.com",
-    messagingSenderId: "1234567890",
-    appId: "1:datos-53cd1:web:abcdef"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  const auth = getAuth(app);
-
-  window._fb = { db, auth, ref, onValue, set, push, update, remove, get,
-    createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
-    onAuthStateChanged, updateProfile };
-  window._fbReady = true;
-  document.dispatchEvent(new Event('fb-ready'));
+    messagingSenderId: "116551372390",
+    appId: "1:116551372390:web:e7b8aff5894b14af05a7a7"
+  });
+  window._DB   = firebase.database();
+  window._AUTH = firebase.auth();
 </script>
 
 <style>
@@ -42,428 +30,250 @@
 :root{
   --gold:#c8a84b;--gold2:#e5c96e;--gold-dim:#8a6f2e;
   --bg:#09090d;--bg2:#0f0f16;--bg3:#16161f;--bg4:#1e1e2a;--bg5:#26263a;
-  --border:rgba(200,168,75,0.13);--border2:rgba(200,168,75,0.22);
+  --border:rgba(200,168,75,.13);--border2:rgba(200,168,75,.22);
   --text:#e8e0cc;--muted:#7a7090;
-  --red:#e05252;--green:#52c87a;--blue:#5296c8;--yellow:#c8b452;
-  --cyan:#00E9F1;
+  --red:#e05252;--green:#52c87a;--blue:#5296c8;--yellow:#c8b452;--cyan:#00E9F1;
   --r:10px;--sh:0 4px 24px rgba(0,0,0,.7);
 }
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-a{color:var(--gold);text-decoration:none}
-img{max-width:100%}
-button{cursor:pointer;font-family:inherit}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+a{color:var(--gold);text-decoration:none}img{max-width:100%}button{cursor:pointer;font-family:inherit}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:3px}
 
 /* ── HEADER ── */
-#header{
-  position:fixed;top:0;left:0;right:0;z-index:200;height:58px;
-  background:rgba(9,9,13,.95);backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:12px;
-}
-.logo{font-family:'Bebas Neue',cursive;font-size:1.35rem;letter-spacing:3px;color:var(--gold);white-space:nowrap;cursor:pointer}
-.logo span{color:var(--muted);font-size:1rem}
-
-/* NAV pill */
-#nav{
-  display:flex;align-items:center;gap:2px;
-  background:var(--bg3);border:1px solid var(--border);border-radius:32px;padding:4px;
-  flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
-}
+#header{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;background:rgba(9,9,13,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 18px;gap:10px}
+.logo{font-family:'Bebas Neue',cursive;font-size:1.3rem;letter-spacing:3px;color:var(--gold);white-space:nowrap;cursor:pointer}
+.logo span{color:var(--muted);font-size:.9rem}
+#nav{display:flex;align-items:center;gap:2px;background:var(--bg3);border:1px solid var(--border);border-radius:32px;padding:3px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 #nav::-webkit-scrollbar{display:none}
-.nb{
-  background:none;border:none;color:var(--muted);
-  padding:5px 13px;border-radius:28px;
-  font-size:0.75rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
-  white-space:nowrap;transition:all .18s;
-}
-.nb:hover{color:var(--gold)}
-.nb.active{background:var(--gold);color:var(--bg)}
-
-/* Header right */
-.hright{display:flex;align-items:center;gap:8px;flex-shrink:0}
-#btn-login{
-  background:none;border:1px solid var(--border2);color:var(--gold);
-  padding:6px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;
-  letter-spacing:.5px;text-transform:uppercase;transition:background .18s;
-}
+.nb{background:none;border:none;color:var(--muted);padding:5px 12px;border-radius:28px;font-size:.72rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;transition:all .18s}
+.nb:hover{color:var(--gold)}.nb.active{background:var(--gold);color:var(--bg)}
+.hright{display:flex;align-items:center;gap:7px;flex-shrink:0}
+#btn-login{background:none;border:1px solid var(--border2);color:var(--gold);padding:5px 13px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:background .18s}
 #btn-login:hover{background:rgba(200,168,75,.1)}
-#btn-admin-hdr{
-  background:none;border:1px solid rgba(200,168,75,.18);color:var(--gold-dim);
-  padding:5px 10px;border-radius:6px;font-size:0.7rem;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;transition:all .18s;
-}
+#btn-admin-hdr{background:none;border:1px solid rgba(200,168,75,.18);color:var(--gold-dim);padding:4px 9px;border-radius:6px;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:all .18s}
 #btn-admin-hdr:hover{color:var(--gold);border-color:var(--border2)}
-#btn-avatar{
-  width:34px;height:34px;border-radius:50%;border:2px solid var(--gold);
-  background:var(--bg4);overflow:hidden;display:none;padding:0;flex-shrink:0;
-}
+#btn-avatar{width:32px;height:32px;border-radius:50%;border:2px solid var(--gold);background:var(--bg4);overflow:hidden;display:none;padding:0;flex-shrink:0}
 #btn-avatar img{width:100%;height:100%;object-fit:cover}
 
-/* ── MAIN ── */
-#main{padding-top:58px}
-.page{display:none;min-height:calc(100vh - 58px);padding:36px 20px}
+/* ── MAIN / PAGES ── */
+#main{padding-top:56px}
+.page{display:none;min-height:calc(100vh - 56px);padding:32px 18px}
 .page.active{display:block}
+.maxw{max-width:1160px;margin:0 auto}
 
-/* ── SECTION TITLE ── */
-.stitle{text-align:center;margin-bottom:32px}
-.stitle h2{
-  font-family:'Bebas Neue',cursive;font-size:2rem;letter-spacing:3px;color:var(--gold);
-}
-.stitle p{color:var(--muted);margin-top:6px;font-size:.88rem}
-.gline{width:48px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:8px auto 0}
+/* ── TITLES ── */
+.stitle{text-align:center;margin-bottom:28px}
+.stitle h2{font-family:'Bebas Neue',cursive;font-size:1.9rem;letter-spacing:3px;color:var(--gold)}
+.stitle p{color:var(--muted);margin-top:5px;font-size:.85rem}
+.gline{width:44px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:7px auto 0}
 
-/* ── CARD ── */
+/* ── CARDS ── */
 .card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh)}
-.chover{transition:transform .2s,border-color .2s}
-.chover:hover{transform:translateY(-3px);border-color:var(--border2)}
+.chover{transition:transform .2s,border-color .2s}.chover:hover{transform:translateY(-3px);border-color:var(--border2)}
 
-/* ── GRID ── */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.gfit{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-@media(max-width:900px){.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr}}
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gfit{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
 
 /* ── TABS ── */
-.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:0}
-.tabbtn{
-  background:none;border:none;color:var(--muted);
-  padding:9px 18px;font-size:.83rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
-  border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;
-}
-.tabbtn:hover{color:var(--gold)}
-.tabbtn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tabs{display:flex;gap:2px;margin-bottom:18px;border-bottom:1px solid var(--border);padding-bottom:0}
+.tabbtn{background:none;border:none;color:var(--muted);padding:8px 16px;font-size:.8rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.tabbtn:hover{color:var(--gold)}.tabbtn.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tabpane{display:none}.tabpane.active{display:block}
 
 /* ── TABLES ── */
 .twrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:.86rem}
-thead th{
-  background:var(--bg4);color:var(--gold);padding:9px 11px;text-align:center;
-  font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
-  border-bottom:1px solid var(--border2);
-}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+thead th{background:var(--bg4);color:var(--gold);padding:8px 10px;text-align:center;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border2)}
 thead th:first-child{text-align:left}
 tbody tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .13s}
 tbody tr:hover{background:rgba(200,168,75,.05)}
-tbody td{padding:9px 11px;text-align:center;color:var(--text)}
+tbody td{padding:8px 10px;text-align:center;color:var(--text)}
 tbody td:first-child{text-align:left}
-.pos{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;font-size:.73rem;font-weight:700;background:var(--bg5);color:var(--muted)}
-.pos.p1{background:var(--gold);color:var(--bg)}
-.pos.p2{background:#9e9e9e;color:var(--bg)}
-.pos.p3{background:#a07040;color:var(--bg)}
-.trow-info{display:flex;align-items:center;gap:8px}
-.tsm{width:24px;height:24px;border-radius:50%;object-fit:cover;border:1px solid var(--border2);background:var(--bg5)}
-.tlink{cursor:pointer;font-weight:600}
-.tlink:hover{color:var(--gold);text-decoration:underline}
+.pos{display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%;font-size:.7rem;font-weight:700;background:var(--bg5);color:var(--muted)}
+.pos.p1{background:var(--gold);color:var(--bg)}.pos.p2{background:#9e9e9e;color:var(--bg)}.pos.p3{background:#a07040;color:var(--bg)}
+.trow-info{display:flex;align-items:center;gap:7px}
+.tsm{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid var(--border2);background:var(--bg5)}
+.tlink{cursor:pointer;font-weight:600}.tlink:hover{color:var(--gold)}
 
 /* ── MATCHES ── */
-.matches{display:flex;flex-direction:column;gap:10px}
-.match{padding:14px 18px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px}
-.mteam{display:flex;align-items:center;gap:8px;font-weight:600;font-size:.9rem}
+.matches{display:flex;flex-direction:column;gap:9px}
+.match{padding:12px 16px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:11px}
+.mteam{display:flex;align-items:center;gap:7px;font-weight:600;font-size:.88rem}
 .mteam.right{flex-direction:row-reverse;text-align:right}
-.mscore{
-  font-size:1.3rem;font-weight:900;color:var(--gold);
-  min-width:66px;text-align:center;background:var(--bg4);border-radius:7px;padding:5px 10px;
-}
-.mscore.pend{color:var(--muted);font-size:.82rem;font-weight:400}
+.mscore{font-size:1.25rem;font-weight:900;color:var(--gold);min-width:60px;text-align:center;background:var(--bg4);border-radius:6px;padding:4px 9px}
+.mscore.pend{color:var(--muted);font-size:.8rem;font-weight:400}
 
 /* ── STATS ── */
-.stat-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:7px 4px;border-bottom:1px solid rgba(255,255,255,.05);
-  cursor:pointer;border-radius:4px;transition:background .13s;
-}
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:6px 4px;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer;border-radius:4px;transition:background .13s}
 .stat-row:hover{background:rgba(200,168,75,.06)}
-.srl{display:flex;align-items:center;gap:8px}
-.srpos{color:var(--muted);font-size:.72rem;width:18px}
-.sravatar{width:27px;height:27px;border-radius:50%;object-fit:cover;background:var(--bg5);border:1px solid var(--border2)}
-.srval{font-size:1.05rem;font-weight:800;color:var(--gold);min-width:30px;text-align:right}
-.scard{padding:18px}
-.scard h3{
-  color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;
-  text-transform:uppercase;margin-bottom:13px;display:flex;align-items:center;gap:7px;
-}
-.scard h3::before{content:'';display:block;width:10px;height:10px;background:var(--gold);border-radius:2px}
+.srl{display:flex;align-items:center;gap:7px}
+.srpos{color:var(--muted);font-size:.7rem;width:16px}
+.sravatar{width:26px;height:26px;border-radius:50%;object-fit:cover;background:var(--bg5);border:1px solid var(--border2)}
+.srval{font-size:1rem;font-weight:800;color:var(--gold);min-width:28px;text-align:right}
+.scard{padding:16px}
+.scard h3{color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.scard h3::before{content:'';display:block;width:8px;height:8px;background:var(--gold);border-radius:2px}
 
 /* ── TARJETAS ── */
-.tcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
-.tc{padding:14px 16px;display:flex;align-items:center;gap:13px;cursor:pointer}
-.tc-av{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg5);flex-shrink:0}
-.tc-info{flex:1}.tc-name{font-weight:700;font-size:.93rem}
-.tc-team{color:var(--muted);font-size:.78rem;margin-top:2px}
-.tc-chips{display:flex;gap:5px;margin-top:5px}
-.chip-y{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px;font-size:.72rem;font-weight:700;background:rgba(200,180,75,.18);color:var(--yellow)}
-.chip-r{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:4px;font-size:.72rem;font-weight:700;background:rgba(224,82,82,.18);color:var(--red)}
+.tcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.tc{padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.tc-av{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg5);flex-shrink:0}
+.tc-info{flex:1}.tc-name{font-weight:700;font-size:.9rem}.tc-team{color:var(--muted);font-size:.76rem;margin-top:2px}
+.tc-chips{display:flex;gap:4px;margin-top:4px}
+.chip-y{display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:4px;font-size:.7rem;font-weight:700;background:rgba(200,180,75,.18);color:var(--yellow)}
+.chip-r{display:inline-flex;align-items:center;gap:2px;padding:2px 6px;border-radius:4px;font-size:.7rem;font-weight:700;background:rgba(224,82,82,.18);color:var(--red)}
 
 /* ── NEWS ── */
-.ngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.ngrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
 .ncard{overflow:hidden;display:flex;flex-direction:column}
-.nimg{width:100%;height:170px;object-fit:cover;background:var(--bg4)}
-.nimg-ph{width:100%;height:170px;background:var(--bg4);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:2rem}
-.nbody{padding:15px;flex:1;display:flex;flex-direction:column}
-.ntag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(200,168,75,.14);color:var(--gold);margin-bottom:7px}
-.ntitle{font-size:.97rem;font-weight:700;margin-bottom:5px}
-.ndesc{color:var(--muted);font-size:.83rem;flex:1;line-height:1.55}
-.nfoot{display:flex;align-items:center;justify-content:space-between;margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07)}
-.ndate{color:var(--muted);font-size:.76rem}
-.nlink{font-size:.76rem;color:var(--gold)}
+.nimg{width:100%;height:165px;object-fit:cover;background:var(--bg4)}
+.nimg-ph{width:100%;height:165px;background:var(--bg4);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:2rem}
+.nbody{padding:14px;flex:1;display:flex;flex-direction:column}
+.ntag{display:inline-block;padding:2px 7px;border-radius:4px;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(200,168,75,.14);color:var(--gold);margin-bottom:6px}
+.ntitle{font-size:.95rem;font-weight:700;margin-bottom:5px}
+.ndesc{color:var(--muted);font-size:.82rem;flex:1;line-height:1.55}
+.nfoot{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07)}
+.ndate{color:var(--muted);font-size:.74rem}.nlink{font-size:.74rem;color:var(--gold)}
 
 /* ── AFILIADOS ── */
-.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
-.afcard{padding:22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:11px}
-.af-logo{width:76px;height:76px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg4)}
-.af-nom{font-size:.97rem;font-weight:700}
-.af-desc{color:var(--muted);font-size:.83rem;text-align:center;line-height:1.5}
-.af-btns{display:flex;gap:7px;margin-top:3px}
-.bsm{padding:5px 12px;border-radius:6px;font-size:.73rem;font-weight:600;border:1px solid var(--border2);color:var(--gold);background:transparent;transition:all .18s}
+.agrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.afcard{padding:20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.af-logo{width:70px;height:70px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg4)}
+.af-nom{font-size:.95rem;font-weight:700}
+.af-desc{color:var(--muted);font-size:.82rem;text-align:center;line-height:1.5}
+.af-btns{display:flex;gap:6px;margin-top:3px}
+.bsm{padding:4px 11px;border-radius:6px;font-size:.71rem;font-weight:600;border:1px solid var(--border2);color:var(--gold);background:transparent;transition:all .18s}
 .bsm:hover{background:rgba(200,168,75,.1)}
 
 /* ── EQUIPOS ── */
-.eqcard{padding:22px 14px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:9px}
-.eq-logo{width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg4)}
-.eq-nom{font-weight:700;font-size:.93rem}
-.eq-abrev{color:var(--gold);font-size:.76rem;font-weight:700;letter-spacing:2px}
+.eqcard{padding:20px 12px;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px}
+.eq-logo{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg4)}
+.eq-nom{font-weight:700;font-size:.9rem}.eq-abrev{color:var(--gold);font-size:.74rem;font-weight:700;letter-spacing:2px}
 
-/* ── FICHAJES ── */
-.flist{display:flex;flex-direction:column;gap:9px;max-width:680px;margin:0 auto}
-.fitem{
-  padding:13px 16px;display:flex;align-items:center;gap:13px;
-  border-radius:var(--r);background:var(--bg3);border:1px solid var(--border);
-}
-.fav{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg5);flex-shrink:0}
-.fav-team{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--border2);background:var(--bg5);flex-shrink:0}
-.ftxt{flex:1}.ftitle{font-weight:600;font-size:.88rem}
-.fsub{color:var(--muted);font-size:.76rem;margin-top:2px}
-.fbadge{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;white-space:nowrap}
-.bf{background:rgba(82,200,122,.14);color:var(--green)}
-.bt{background:rgba(82,150,200,.14);color:var(--blue)}
-.bb{background:rgba(224,82,82,.14);color:var(--red)}
-.fdate{color:var(--muted);font-size:.73rem;white-space:nowrap}
+/* ── FICHAJES (mercado) ── */
+.flist{display:flex;flex-direction:column;gap:8px;max-width:660px;margin:0 auto}
+.fitem{padding:11px 14px;display:flex;align-items:center;gap:11px;border-radius:var(--r);background:var(--bg3);border:1px solid var(--border)}
+.fav{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--border2);background:var(--bg5);flex-shrink:0}
+.fav-team{width:30px;height:30px;border-radius:50%;object-fit:cover;border:1px solid var(--border2);background:var(--bg5);flex-shrink:0}
+.ftxt{flex:1;min-width:0}.ftitle{font-weight:600;font-size:.86rem}.fsub{color:var(--muted);font-size:.74rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fbadge{font-size:.66rem;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase;white-space:nowrap}
+.bf{background:rgba(82,200,122,.14);color:var(--green)}.bt{background:rgba(82,150,200,.14);color:var(--blue)}.bb{background:rgba(224,82,82,.14);color:var(--red)}
+.fdate{color:var(--muted);font-size:.71rem;white-space:nowrap}
+.farrow{color:var(--muted);font-size:.8rem;flex-shrink:0}
 
 /* ── HERO ── */
-.hero{
-  min-height:calc(100vh - 58px);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;padding:40px 20px;
-  background:radial-gradient(ellipse 70% 50% at 50% 20%,rgba(200,168,75,.07) 0%,transparent 65%);
-  position:relative;overflow:hidden;
-}
-.hero-grid{
-  position:absolute;inset:0;opacity:.15;pointer-events:none;
-  background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
-  background-size:50px 50px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);
-}
-.hero-tag{
-  display:inline-block;padding:4px 14px;border:1px solid var(--border2);
-  border-radius:100px;font-size:.7rem;color:var(--gold);letter-spacing:2px;
-  text-transform:uppercase;margin-bottom:18px;font-family:'JetBrains Mono',monospace;
-}
-.hero h1{
-  font-family:'Bebas Neue',cursive;font-size:clamp(3rem,9vw,6.5rem);
-  line-height:.9;letter-spacing:4px;margin-bottom:14px;
-}
+.hero{min-height:calc(100vh - 56px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px 18px;background:radial-gradient(ellipse 70% 50% at 50% 20%,rgba(200,168,75,.07) 0%,transparent 65%);position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;opacity:.12;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
+.hero-tag{display:inline-block;padding:3px 12px;border:1px solid var(--border2);border-radius:100px;font-size:.68rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;font-family:'JetBrains Mono',monospace}
+.hero h1{font-family:'Bebas Neue',cursive;font-size:clamp(2.8rem,8vw,6rem);line-height:.9;letter-spacing:4px;margin-bottom:12px}
 .hero h1 span{color:var(--gold)}
-.hero p{color:var(--muted);max-width:460px;line-height:1.6;margin:0 auto 28px;font-size:1rem}
-.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.bprimary{
-  padding:11px 26px;background:linear-gradient(135deg,var(--gold),var(--gold2));
-  border:none;color:var(--bg);font-weight:700;border-radius:28px;
-  font-size:.88rem;transition:all .2s;
-}
+.hero p{color:var(--muted);max-width:440px;line-height:1.6;margin:0 auto 24px;font-size:.95rem}
+.hero-btns{display:flex;gap:9px;justify-content:center;flex-wrap:wrap}
+.bprimary{padding:10px 24px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:var(--bg);font-weight:700;border-radius:28px;font-size:.86rem;transition:all .2s}
 .bprimary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,168,75,.3)}
-.bsecondary{
-  padding:11px 26px;background:transparent;border:1px solid var(--border2);
-  color:var(--gold);font-weight:600;border-radius:28px;font-size:.88rem;transition:all .2s;
-}
+.bsecondary{padding:10px 24px;background:transparent;border:1px solid var(--border2);color:var(--gold);font-weight:600;border-radius:28px;font-size:.86rem;transition:all .2s}
 .bsecondary:hover{background:rgba(200,168,75,.1)}
-.hero-stats{display:flex;gap:40px;margin-top:44px;padding-top:24px;border-top:1px solid var(--border)}
-.hstat-n{font-family:'Bebas Neue',cursive;font-size:2.4rem;color:var(--gold);line-height:1;display:block}
-.hstat-l{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.hero-stats{display:flex;gap:36px;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+.hstat-n{font-family:'Bebas Neue',cursive;font-size:2.2rem;color:var(--gold);line-height:1;display:block}
+.hstat-l{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
 
 /* ── CUENTA ── */
-.cbox{max-width:440px;margin:0 auto}
-.abox{padding:28px}
-.abox h3{color:var(--gold);font-size:1rem;margin-bottom:18px;text-align:center;font-weight:700}
-.fg{margin-bottom:14px}
-.fg label{display:block;color:var(--muted);font-size:.78rem;margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.fg input{
-  width:100%;background:var(--bg4);border:1px solid var(--border2);color:var(--text);
-  padding:9px 13px;border-radius:8px;font-size:.88rem;transition:border-color .2s;font-family:inherit;
-}
+.cbox{max-width:430px;margin:0 auto}
+.abox{padding:26px}
+.abox h3{color:var(--gold);font-size:.95rem;margin-bottom:16px;text-align:center;font-weight:700}
+.fg{margin-bottom:12px}
+.fg label{display:block;color:var(--muted);font-size:.76rem;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.fg input{width:100%;background:var(--bg4);border:1px solid var(--border2);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.86rem;transition:border-color .2s;font-family:inherit}
 .fg input:focus{outline:none;border-color:var(--gold)}
-.bp{
-  width:100%;padding:10px;border:none;border-radius:8px;
-  background:linear-gradient(135deg,var(--gold),var(--gold2));
-  color:var(--bg);font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-  transition:opacity .2s;margin-top:4px;
-}
+.bp{width:100%;padding:9px;border:none;border-radius:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg);font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:opacity .2s;margin-top:3px}
 .bp:hover{opacity:.85}
-.bs{
-  width:100%;padding:10px;border-radius:8px;background:transparent;
-  border:1px solid var(--border2);color:var(--gold);font-size:.88rem;font-weight:600;margin-top:7px;transition:background .2s;
-}
+.bs{width:100%;padding:9px;border-radius:8px;background:transparent;border:1px solid var(--border2);color:var(--gold);font-size:.86rem;font-weight:600;margin-top:6px;transition:background .2s}
 .bs:hover{background:rgba(200,168,75,.1)}
-.atog{text-align:center;margin-top:13px;color:var(--muted);font-size:.82rem}
+.atog{text-align:center;margin-top:12px;color:var(--muted);font-size:.8rem}
 .atog button{background:none;border:none;color:var(--gold);font-weight:600}
-.pbox{padding:26px}
-.phead{display:flex;align-items:center;gap:18px;margin-bottom:24px}
+.pbox{padding:24px}
+.phead{display:flex;align-items:center;gap:16px;margin-bottom:22px}
 .pav-wrap{position:relative}
-.pav{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);background:var(--bg4);cursor:pointer}
-.pav-edit{
-  position:absolute;bottom:0;right:0;width:22px;height:22px;border-radius:50%;
-  background:var(--gold);color:var(--bg);border:none;font-size:.65rem;
-  display:flex;align-items:center;justify-content:center;
-}
-.pinfo h3{font-size:1.1rem;font-weight:700}
-.pinfo p{color:var(--muted);font-size:.83rem;margin-top:3px}
-.vbox{
-  background:var(--bg4);border:1px dashed var(--border2);
-  border-radius:8px;padding:14px;margin-top:14px;text-align:center;
-}
-.vbox p{color:var(--muted);font-size:.82rem;margin-bottom:7px}
-.uid-code{
-  font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--gold);
-  background:var(--bg5);padding:7px 14px;border-radius:6px;letter-spacing:3px;display:inline-block;
-}
-.dbadge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(88,101,242,.15);color:#7289da;
-  padding:3px 9px;border-radius:5px;font-size:.78rem;font-weight:600;
-}
-.ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.ps-item{background:var(--bg4);border-radius:7px;padding:10px;text-align:center}
-.ps-val{font-size:1.3rem;font-weight:900;color:var(--gold)}
-.ps-lbl{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.pav{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);background:var(--bg4);cursor:pointer}
+.pav-edit{position:absolute;bottom:0;right:0;width:20px;height:20px;border-radius:50%;background:var(--gold);color:var(--bg);border:none;font-size:.6rem;display:flex;align-items:center;justify-content:center}
+.pinfo h3{font-size:1.05rem;font-weight:700}.pinfo p{color:var(--muted);font-size:.8rem;margin-top:2px}
+.vbox{background:var(--bg4);border:1px dashed var(--border2);border-radius:8px;padding:12px;margin-top:12px;text-align:center}
+.vbox p{color:var(--muted);font-size:.8rem;margin-bottom:6px}
+.uid-code{font-family:'JetBrains Mono',monospace;font-size:.95rem;color:var(--gold);background:var(--bg5);padding:6px 12px;border-radius:6px;letter-spacing:3px;display:inline-block}
+.dbadge{display:inline-flex;align-items:center;gap:4px;background:rgba(88,101,242,.15);color:#7289da;padding:3px 8px;border-radius:5px;font-size:.76rem;font-weight:600}
+.ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.ps-item{background:var(--bg4);border-radius:7px;padding:9px;text-align:center}
+.ps-val{font-size:1.25rem;font-weight:900;color:var(--gold)}.ps-lbl{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 
 /* ── REGLAMENTO ── */
-.regwrap{max-width:780px;margin:0 auto}
-.regsec{margin-bottom:28px}
-.regsec h3{
-  color:var(--gold);font-size:.88rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
-  margin-bottom:11px;padding-bottom:7px;border-bottom:1px solid var(--border2);
-}
-.regsec p,.regsec li{color:var(--muted);line-height:1.7;margin-bottom:5px}
-.regsec ul{padding-left:16px}
+.regwrap{max-width:740px;margin:0 auto}
+.regsec{margin-bottom:26px}
+.regsec h3{color:var(--gold);font-size:.86rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border2)}
+.regsec p,.regsec li{color:var(--muted);line-height:1.7;margin-bottom:4px}
+.regsec ul{padding-left:14px}
 
 /* ── MODALS ── */
-.moverlay{
-  position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.78);
-  backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;
-  padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;
-}
+.moverlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .2s}
 .moverlay.open{opacity:1;pointer-events:all}
-.mbox{
-  background:var(--bg2);border:1px solid var(--border2);border-radius:14px;
-  max-width:540px;width:100%;max-height:88vh;overflow-y:auto;
-  transform:translateY(20px);transition:transform .2s;
-}
+.mbox{background:var(--bg2);border:1px solid var(--border2);border-radius:14px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;transform:translateY(20px);transition:transform .2s}
 .moverlay.open .mbox{transform:translateY(0)}
-.mhead{
-  padding:18px 22px 14px;display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid var(--border);
-}
-.mhead h3{font-size:.97rem;font-weight:700;color:var(--gold)}
-.mclose{background:none;border:none;color:var(--muted);font-size:1.2rem;line-height:1;padding:3px}
-.mclose:hover{color:var(--text)}
-.mbody{padding:18px 22px}
+.mhead{padding:16px 20px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.mhead h3{font-size:.93rem;font-weight:700;color:var(--gold)}
+.mclose{background:none;border:none;color:var(--muted);font-size:1.1rem;line-height:1;padding:2px}.mclose:hover{color:var(--text)}
+.mbody{padding:16px 20px}
 
 /* Jugador modal */
-.pj-hero{display:flex;align-items:center;gap:16px;margin-bottom:20px}
-.pj-av{width:66px;height:66px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;background:var(--bg4)}
-.pj-name{font-size:1.15rem;font-weight:800}
-.pj-team{color:var(--muted);font-size:.83rem;margin-top:3px}
-.pj-sg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.pjs{background:var(--bg4);border-radius:7px;padding:10px;text-align:center}
-.pjs-v{font-size:1.35rem;font-weight:900;color:var(--gold)}
-.pjs-l{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
-.sanlist{margin-top:16px}
-.sanitem{
-  padding:7px 11px;background:rgba(224,82,82,.07);
-  border:1px solid rgba(224,82,82,.2);border-radius:5px;margin-bottom:5px;
-  font-size:.82rem;display:flex;justify-content:space-between;
-}
+.pj-hero{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.pj-av{width:62px;height:62px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;background:var(--bg4)}
+.pj-name{font-size:1.1rem;font-weight:800}.pj-team{color:var(--muted);font-size:.8rem;margin-top:2px}
+.pj-sg{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.pjs{background:var(--bg4);border-radius:7px;padding:9px;text-align:center}
+.pjs-v{font-size:1.3rem;font-weight:900;color:var(--gold)}.pjs-l{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.sanlist{margin-top:14px}
+.sanitem{padding:6px 10px;background:rgba(224,82,82,.07);border:1px solid rgba(224,82,82,.2);border-radius:5px;margin-bottom:4px;font-size:.8rem;display:flex;justify-content:space-between}
 
 /* Equipo modal */
-.eq-hero{display:flex;align-items:center;gap:16px;margin-bottom:22px}
-.eq-lg{width:68px;height:68px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;background:var(--bg4)}
-.eq-n{font-size:1.15rem;font-weight:800}
-.eq-ab{color:var(--gold);font-size:.78rem;font-weight:700;letter-spacing:2px;margin-top:2px}
-.plist{display:flex;flex-direction:column;gap:7px}
-.pmember{display:flex;align-items:center;gap:9px;padding:7px;background:var(--bg4);border-radius:6px}
-.pav2{width:30px;height:30px;border-radius:50%;object-fit:cover;background:var(--bg5)}
-.pname{font-size:.86rem;font-weight:600}
-.prole{font-size:.73rem;color:var(--muted)}
+.eq-hero{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.eq-lg{width:64px;height:64px;border-radius:50%;border:3px solid var(--gold);object-fit:cover;background:var(--bg4)}
+.eq-n{font-size:1.1rem;font-weight:800}.eq-ab{color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:2px;margin-top:2px}
+.plist{display:flex;flex-direction:column;gap:6px}
+.pmember{display:flex;align-items:center;gap:8px;padding:6px;background:var(--bg4);border-radius:6px}
+.pav2{width:28px;height:28px;border-radius:50%;object-fit:cover;background:var(--bg5)}
+.pname{font-size:.84rem;font-weight:600}.prole{font-size:.71rem;color:var(--muted)}
 
 /* ── ADMIN ── */
-.admin-mbox{max-width:720px}
-.adm-tab{
-  padding:13px 18px;background:none;border:none;
-  border-bottom:1px solid rgba(200,168,75,.1);
-  color:var(--muted);font-size:.82rem;font-weight:600;text-align:left;
-  text-transform:uppercase;letter-spacing:1px;transition:all .2s;
-  display:flex;align-items:center;justify-content:space-between;width:100%;
-}
-.adm-tab:hover{color:var(--gold);background:rgba(200,168,75,.04)}
-.adm-tab.open{color:var(--gold)}
-.adm-content{display:none;padding:14px 18px;border-bottom:1px solid rgba(200,168,75,.07);background:var(--bg4)}
+.admin-mbox{max-width:700px}
+.adm-tab{padding:12px 16px;background:none;border:none;border-bottom:1px solid rgba(200,168,75,.1);color:var(--muted);font-size:.8rem;font-weight:600;text-align:left;text-transform:uppercase;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;justify-content:space-between;width:100%}
+.adm-tab:hover{color:var(--gold);background:rgba(200,168,75,.04)}.adm-tab.open{color:var(--gold)}
+.adm-content{display:none;padding:13px 16px;border-bottom:1px solid rgba(200,168,75,.07);background:var(--bg4)}
 .adm-content.open{display:block}
-.adm-pass{
-  background:var(--bg4);border:1px solid var(--border2);color:var(--text);
-  padding:10px 13px;border-radius:8px;font-size:.88rem;width:100%;
-}
-.adm-inp{
-  background:var(--bg5);border:1px solid rgba(200,168,75,.15);color:var(--text);
-  padding:5px 7px;border-radius:5px;font-size:.8rem;width:100%;font-family:inherit;
-}
+.adm-pass{background:var(--bg4);border:1px solid var(--border2);color:var(--text);padding:9px 12px;border-radius:8px;font-size:.86rem;width:100%}
+.adm-inp{background:var(--bg5);border:1px solid rgba(200,168,75,.15);color:var(--text);padding:5px 7px;border-radius:5px;font-size:.78rem;width:100%;font-family:inherit}
 .adm-inp:focus{outline:none;border-color:var(--gold)}
-.btn-add{padding:7px 14px;border-radius:6px;font-size:.79rem;font-weight:700;border:none;cursor:pointer;background:rgba(200,168,75,.14);color:var(--gold)}
-.btn-sv{padding:7px 14px;border-radius:6px;font-size:.79rem;font-weight:700;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg)}
-.btn-rst{padding:7px 14px;border-radius:6px;font-size:.79rem;font-weight:700;border:none;cursor:pointer;background:rgba(224,82,82,.15);color:var(--red)}
-.btn-del{background:rgba(224,82,82,.18);color:var(--red);border:none;border-radius:5px;padding:3px 7px;font-size:.73rem;cursor:pointer}
-.adm-rh{font-size:.65rem;color:var(--muted);font-weight:700;text-align:center;text-transform:uppercase}
-.nota-row{border:1px solid rgba(200,168,75,.13);border-radius:8px;padding:11px;margin-bottom:9px;background:var(--bg5)}
-.nota-row .r2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px}
-.nota-row input,.nota-row textarea,.nota-row select{
-  background:var(--bg3);border:1px solid rgba(200,168,75,.13);color:var(--text);
-  padding:6px 9px;border-radius:6px;font-size:.8rem;width:100%;font-family:inherit;
-}
-.nota-row textarea{resize:vertical;min-height:55px}
+.btn-add{padding:6px 13px;border-radius:6px;font-size:.77rem;font-weight:700;border:none;cursor:pointer;background:rgba(200,168,75,.14);color:var(--gold)}
+.btn-sv{padding:6px 13px;border-radius:6px;font-size:.77rem;font-weight:700;border:none;cursor:pointer;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg)}
+.btn-del{background:rgba(224,82,82,.18);color:var(--red);border:none;border-radius:5px;padding:3px 6px;font-size:.71rem;cursor:pointer}
+.nota-row{border:1px solid rgba(200,168,75,.13);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--bg5)}
+.nota-row input,.nota-row textarea,.nota-row select{background:var(--bg3);border:1px solid rgba(200,168,75,.13);color:var(--text);padding:5px 8px;border-radius:6px;font-size:.78rem;width:100%;font-family:inherit}
+.nota-row textarea{resize:vertical;min-height:50px}
 
 /* ── TOAST ── */
-#toast{
-  position:fixed;bottom:22px;right:22px;z-index:9999;
-  background:var(--bg3);border:1px solid var(--border2);
-  color:var(--text);padding:11px 16px;border-radius:8px;
-  font-size:.86rem;max-width:300px;transform:translateY(70px);
-  opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--sh);
-}
+#toast{position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--bg3);border:1px solid var(--border2);color:var(--text);padding:10px 14px;border-radius:8px;font-size:.84rem;max-width:290px;transform:translateY(70px);opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--sh)}
 #toast.show{transform:translateY(0);opacity:1}
-#toast.ok{border-color:rgba(82,200,122,.4)}
-#toast.err{border-color:rgba(224,82,82,.4)}
+#toast.ok{border-color:rgba(82,200,122,.4)}#toast.err{border-color:rgba(224,82,82,.4)}
 
 /* ── MISC ── */
-.loading{text-align:center;padding:36px;color:var(--muted)}
-.spin{width:30px;height:30px;border-radius:50%;border:3px solid rgba(200,168,75,.18);border-top-color:var(--gold);animation:spin .8s linear infinite;margin:0 auto 11px}
+.loading{text-align:center;padding:32px;color:var(--muted)}
+.spin{width:28px;height:28px;border-radius:50%;border:3px solid rgba(200,168,75,.18);border-top-color:var(--gold);animation:spin .8s linear infinite;margin:0 auto 10px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.empty{text-align:center;padding:56px 20px;color:var(--muted)}
-.empty .ei{font-size:2.4rem;margin-bottom:11px}
-.empty p{font-size:.88rem}
-.maxw{max-width:1180px;margin:0 auto}
-.sel-styled{
-  background:var(--bg4);border:1px solid var(--border2);color:var(--text);
-  padding:7px 12px;border-radius:var(--r);font-size:.84rem;font-family:inherit;
-}
-@media(max-width:600px){
-  #nav{display:none}
-  .g2,.g3{grid-template-columns:1fr}
-  .pj-sg{grid-template-columns:repeat(2,1fr)}
-  .hero h1{font-size:2.6rem}
-  .hero-stats{gap:24px}
-}
+.empty{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty .ei{font-size:2.2rem;margin-bottom:10px}.empty p{font-size:.86rem}
+.sel-styled{background:var(--bg4);border:1px solid var(--border2);color:var(--text);padding:6px 11px;border-radius:var(--r);font-size:.82rem;font-family:inherit}
+@media(max-width:600px){#nav{display:none}.hero h1{font-size:2.5rem}.hero-stats{gap:22px}.pj-sg{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 <body>
@@ -496,11 +306,11 @@ tbody td:first-child{text-align:left}
 <section class="page active" id="p-inicio">
   <div class="hero">
     <div class="hero-grid"></div>
-    <span class="hero-tag">⚽ Temporada 2026</span>
+    <span class="hero-tag">Temporada 2026</span>
     <h1>Liga<br><span>Rushbet</span></h1>
-    <p>La liga oficial de Haxball. Competición, estadísticas en tiempo real, fichajes y todo lo que necesitas sobre la temporada.</p>
+    <p>La liga oficial de Haxball. Estadisticas en tiempo real, fichajes, jornadas y clasificaciones.</p>
     <div class="hero-btns">
-      <button class="bprimary" onclick="go('tablas')">Ver Clasificación</button>
+      <button class="bprimary" onclick="go('tablas')">Ver Clasificacion</button>
       <button class="bsecondary" onclick="go('jornadas')">Ver Jornadas</button>
     </div>
     <div class="hero-stats">
@@ -514,15 +324,15 @@ tbody td:first-child{text-align:left}
 <!-- TABLAS -->
 <section class="page" id="p-tablas">
   <div class="maxw">
-    <div class="stitle"><h2>Clasificación</h2><div class="gline"></div></div>
+    <div class="stitle"><h2>Clasificacion</h2><div class="gline"></div></div>
     <div class="g2">
-      <div class="card" style="padding:22px">
-        <h3 style="color:var(--gold);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px">🥇 Primera División</h3>
-        <div class="twrap" id="t1"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+      <div class="card" style="padding:20px">
+        <h3 style="color:var(--gold);font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Primera Division</h3>
+        <div class="twrap" id="t1"><div class="loading"><div class="spin"></div></div></div>
       </div>
-      <div class="card" style="padding:22px">
-        <h3 style="color:var(--gold);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px">🥈 Segunda División</h3>
-        <div class="twrap" id="t2"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+      <div class="card" style="padding:20px">
+        <h3 style="color:var(--gold);font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px">Segunda Division</h3>
+        <div class="twrap" id="t2"><div class="loading"><div class="spin"></div></div></div>
       </div>
     </div>
   </div>
@@ -533,21 +343,21 @@ tbody td:first-child{text-align:left}
   <div class="maxw">
     <div class="stitle"><h2>Jornadas</h2><div class="gline"></div></div>
     <div class="tabs">
-      <button class="tabbtn active" onclick="switchJDiv('primera',this)">Primera División</button>
-      <button class="tabbtn" onclick="switchJDiv('segunda',this)">Segunda División</button>
+      <button class="tabbtn active" onclick="switchJDiv('primera',this)">Primera</button>
+      <button class="tabbtn" onclick="switchJDiv('segunda',this)">Segunda</button>
     </div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap">
-      <label style="color:var(--muted);font-size:.83rem">Jornada:</label>
+    <div style="display:flex;align-items:center;gap:11px;margin-bottom:16px">
+      <label style="color:var(--muted);font-size:.8rem">Jornada:</label>
       <select class="sel-styled" id="jsel" onchange="renderJornada()"></select>
     </div>
-    <div id="jmatches"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+    <div id="jmatches"><div class="loading"><div class="spin"></div></div></div>
   </div>
 </section>
 
 <!-- STATS -->
 <section class="page" id="p-stats">
   <div class="maxw">
-    <div class="stitle"><h2>Estadísticas</h2><div class="gline"></div></div>
+    <div class="stitle"><h2>Estadisticas</h2><div class="gline"></div></div>
     <div class="g3">
       <div class="card scard"><h3>Goleadores</h3><div id="sg"></div></div>
       <div class="card scard"><h3>Asistencias</h3><div id="sa"></div></div>
@@ -560,15 +370,15 @@ tbody td:first-child{text-align:left}
 <section class="page" id="p-tarjetas">
   <div class="maxw">
     <div class="stitle"><h2>Disciplina</h2><div class="gline"></div></div>
-    <div id="tarjetas-wrap"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+    <div id="tarjetas-wrap"><div class="loading"><div class="spin"></div></div></div>
   </div>
 </section>
 
 <!-- FICHAJES -->
 <section class="page" id="p-fichajes">
   <div class="maxw">
-    <div class="stitle"><h2>Mercado</h2><div class="gline"></div><p>Últimos movimientos de jugadores</p></div>
-    <div id="fichajes-wrap"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+    <div class="stitle"><h2>Mercado</h2><div class="gline"></div><p>Ultimos movimientos de jugadores</p></div>
+    <div id="fichajes-wrap"><div class="loading"><div class="spin"></div></div></div>
   </div>
 </section>
 
@@ -576,7 +386,7 @@ tbody td:first-child{text-align:left}
 <section class="page" id="p-equipos">
   <div class="maxw">
     <div class="stitle"><h2>Equipos</h2><div class="gline"></div></div>
-    <div id="equipos-wrap"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+    <div id="equipos-wrap"><div class="loading"><div class="spin"></div></div></div>
   </div>
 </section>
 
@@ -584,7 +394,7 @@ tbody td:first-child{text-align:left}
 <section class="page" id="p-noticias">
   <div class="maxw">
     <div class="stitle"><h2>Noticias</h2><div class="gline"></div></div>
-    <div id="noticias-wrap"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+    <div id="noticias-wrap"><div class="loading"><div class="spin"></div></div></div>
   </div>
 </section>
 
@@ -592,7 +402,7 @@ tbody td:first-child{text-align:left}
 <section class="page" id="p-afiliados">
   <div class="maxw">
     <div class="stitle"><h2>Afiliados</h2><div class="gline"></div><p>Patrocinadores y colaboradores</p></div>
-    <div id="afiliados-wrap"><div class="loading"><div class="spin"></div>Cargando...</div></div>
+    <div id="afiliados-wrap"><div class="loading"><div class="spin"></div></div></div>
   </div>
 </section>
 
@@ -600,10 +410,10 @@ tbody td:first-child{text-align:left}
 <section class="page" id="p-reglamento">
   <div class="maxw"><div class="stitle"><h2>Reglamento</h2><div class="gline"></div></div>
   <div class="regwrap">
-    <div class="regsec"><h3>1. Participación</h3><ul>
+    <div class="regsec"><h3>1. Participacion</h3><ul>
       <li>Todos los equipos deben estar registrados antes del inicio de la temporada.</li>
-      <li>Cada equipo debe contar con un mínimo de 4 jugadores para participar.</li>
-      <li>Los jugadores no pueden pertenecer a más de un equipo simultáneamente.</li>
+      <li>Cada equipo debe contar con un minimo de 4 jugadores para participar.</li>
+      <li>Los jugadores no pueden pertenecer a mas de un equipo simultaneamente.</li>
     </ul></div>
     <div class="regsec"><h3>2. Partidos</h3><ul>
       <li>Los partidos se juegan en la sala oficial de Liga Rushbet en Haxball.</li>
@@ -613,19 +423,19 @@ tbody td:first-child{text-align:left}
     </ul></div>
     <div class="regsec"><h3>3. Tarjetas y Sanciones</h3><ul>
       <li>Tarjeta amarilla: conducta antideportiva leve.</li>
-      <li>2 amarillas acumuladas = 1 partido de suspensión.</li>
-      <li>Tarjeta roja directa: 2 partidos de suspensión.</li>
+      <li>2 amarillas acumuladas = 1 partido de suspension.</li>
+      <li>Tarjeta roja directa: 2 partidos de suspension.</li>
       <li>Apelaciones dentro de las 48h por el canal de Discord correspondiente.</li>
     </ul></div>
     <div class="regsec"><h3>4. Fichajes</h3><ul>
-      <li>El mercado de fichajes está abierto las dos primeras semanas de cada mes.</li>
-      <li>Los fichajes se gestionan a través del bot de Discord.</li>
-      <li>Jugador sancionado no puede ser fichado hasta cumplir su sanción.</li>
+      <li>El mercado de fichajes esta abierto las dos primeras semanas de cada mes.</li>
+      <li>Los fichajes se gestionan a traves del bot de Discord.</li>
+      <li>Jugador sancionado no puede ser fichado hasta cumplir su sancion.</li>
     </ul></div>
-    <div class="regsec"><h3>5. Clasificación</h3><ul>
-      <li>Victoria: 3 pts · Empate: 1 pt · Derrota: 0 pts.</li>
-      <li>En empate a puntos: diferencia de goles → goles a favor → enfrentamiento directo.</li>
-      <li>Los 2 últimos de Primera descienden. Los 2 primeros de Segunda ascienden.</li>
+    <div class="regsec"><h3>5. Clasificacion</h3><ul>
+      <li>Victoria: 3 pts — Empate: 1 pt — Derrota: 0 pts.</li>
+      <li>En empate a puntos: diferencia de goles, goles a favor, enfrentamiento directo.</li>
+      <li>Los 2 ultimos de Primera descienden. Los 2 primeros de Segunda ascienden.</li>
     </ul></div>
   </div></div>
 </section>
@@ -636,41 +446,41 @@ tbody td:first-child{text-align:left}
   <div class="cbox">
     <div id="auth-panel" class="card abox">
       <div id="lp">
-        <h3>Iniciar Sesión</h3>
+        <h3>Iniciar Sesion</h3>
         <div class="fg"><label>Email</label><input type="email" id="le" placeholder="tu@email.com"></div>
-        <div class="fg"><label>Contraseña</label><input type="password" id="lp2" placeholder="••••••••"></div>
+        <div class="fg"><label>Contrasena</label><input type="password" id="lp2" placeholder="••••••••"></div>
         <button class="bp" onclick="doLogin()">Entrar</button>
-        <div class="atog">¿No tienes cuenta? <button onclick="toggleAuth(true)">Regístrate</button></div>
+        <div class="atog">No tienes cuenta? <button onclick="toggleAuth(true)">Registrate</button></div>
       </div>
       <div id="rp" style="display:none">
         <h3>Crear Cuenta</h3>
         <div class="fg"><label>Usuario</label><input type="text" id="rn" placeholder="NombreJugador"></div>
         <div class="fg"><label>Email</label><input type="email" id="re" placeholder="tu@email.com"></div>
-        <div class="fg"><label>Contraseña</label><input type="password" id="rpw" placeholder="••••••••"></div>
+        <div class="fg"><label>Contrasena</label><input type="password" id="rpw" placeholder="••••••••"></div>
         <button class="bp" onclick="doRegister()">Crear Cuenta</button>
-        <div class="atog">¿Ya tienes cuenta? <button onclick="toggleAuth(false)">Inicia sesión</button></div>
+        <div class="atog">Ya tienes cuenta? <button onclick="toggleAuth(false)">Inicia sesion</button></div>
       </div>
     </div>
     <div id="perfil-panel" class="card pbox" style="display:none">
       <div class="phead">
         <div class="pav-wrap">
           <img class="pav" id="pav" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="">
-          <button class="pav-edit" onclick="document.getElementById('av-file').click()">✏️</button>
+          <button class="pav-edit" onclick="document.getElementById('av-file').click()">✏</button>
           <input type="file" id="av-file" accept="image/*" style="display:none" onchange="uploadAvatar(event)">
         </div>
         <div class="pinfo">
           <h3 id="pnom">–</h3>
           <p id="pmail">–</p>
-          <div id="pdc" style="margin-top:5px;display:none"></div>
+          <div id="pdc" style="margin-top:4px;display:none"></div>
         </div>
       </div>
       <div class="vbox" id="vbox">
-        <p>Vincula tu cuenta de Discord con este código:</p>
+        <p>Vincula tu Discord con este codigo:</p>
         <div class="uid-code" id="uid-code">–</div>
-        <p style="margin-top:7px;font-size:.73rem">Usa <strong style="color:var(--gold)">/vincular [código]</strong> en Discord</p>
+        <p style="margin-top:6px;font-size:.71rem">Usa <strong style="color:var(--gold)">/vincular [codigo]</strong> en Discord</p>
       </div>
-      <div style="margin-top:18px">
-        <h4 style="color:var(--gold);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:11px">Mis Estadísticas</h4>
+      <div style="margin-top:16px">
+        <h4 style="color:var(--gold);font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Mis Estadisticas</h4>
         <div class="ps-grid">
           <div class="ps-item"><div class="ps-val" id="ps-g">–</div><div class="ps-lbl">Goles</div></div>
           <div class="ps-item"><div class="ps-val" id="ps-a">–</div><div class="ps-lbl">Asist.</div></div>
@@ -680,11 +490,11 @@ tbody td:first-child{text-align:left}
           <div class="ps-item"><div class="ps-val" id="ps-t">–</div><div class="ps-lbl">TA</div></div>
         </div>
       </div>
-      <div style="margin-top:18px">
+      <div style="margin-top:16px">
         <div class="fg"><label>Nombre de usuario</label><input type="text" id="edit-nom" placeholder="Nombre"></div>
-        <button class="bp" style="width:auto;padding:8px 20px" onclick="saveNom()">Guardar</button>
+        <button class="bp" style="width:auto;padding:7px 18px" onclick="saveNom()">Guardar</button>
       </div>
-      <button class="bs" onclick="doLogout()" style="margin-top:14px">Cerrar sesión</button>
+      <button class="bs" onclick="doLogout()" style="margin-top:12px">Cerrar sesion</button>
     </div>
   </div></div>
 </section>
@@ -728,7 +538,7 @@ tbody td:first-child{text-align:left}
         <img class="eq-lg" id="eq-lg" src="" alt="">
         <div><div class="eq-n" id="eq-n">–</div><div class="eq-ab" id="eq-ab">–</div></div>
       </div>
-      <h4 style="color:var(--gold);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:11px">Plantilla</h4>
+      <h4 style="color:var(--gold);font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Plantilla</h4>
       <div class="plist" id="eq-pl"></div>
     </div>
   </div>
@@ -737,82 +547,69 @@ tbody td:first-child{text-align:left}
 <!-- Admin -->
 <div class="moverlay" id="m-admin">
   <div class="mbox admin-mbox">
-    <div class="mhead"><h3>⚙️ Panel de Administración</h3><button class="mclose" onclick="cm('m-admin')">✕</button></div>
+    <div class="mhead"><h3>Panel de Administracion</h3><button class="mclose" onclick="cm('m-admin')">✕</button></div>
     <div class="mbody" id="admin-body">
       <div id="ap-pass">
-        <div class="fg"><label>Contraseña de administrador</label>
+        <div class="fg"><label>Contrasena de administrador</label>
           <input class="adm-pass" type="password" id="adm-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')checkAdminPw()">
         </div>
-        <button class="btn-sv" style="margin-top:8px" onclick="checkAdminPw()">Entrar</button>
+        <button class="btn-sv" style="margin-top:7px" onclick="checkAdminPw()">Entrar</button>
       </div>
       <div id="ap-content" style="display:none"><div id="ap-sections"></div></div>
     </div>
   </div>
 </div>
 
-<!-- Toast -->
 <div id="toast"></div>
 
 <script>
-// ════════════════════════════════════════════════════════════
-//  GLOBALS
-// ════════════════════════════════════════════════════════════
-let _db,_auth,_ref,_onValue,_set,_push,_update,_remove,_get;
-let _createUser,_signIn,_signOut,_onAuthChanged,_updateProfile;
+// ══ GLOBALS ══════════════════════════════════════════════════
 let D = { p1:[],p2:[],j1:[],j2:[],gol:[],asi:[],cs:[],tar:[],news:[],afil:[],eq:[],fich:[],stats:{} };
 let currentJDiv = 'primera';
 let curUser = null, curUserData = null;
 let adminOk = false;
 
-// ════════════════════════════════════════════════════════════
-//  FB INIT
-// ════════════════════════════════════════════════════════════
-document.addEventListener('fb-ready', () => {
-  const fb = window._fb;
-  _db=fb.db; _auth=fb.auth;
-  _ref=fb.ref; _onValue=fb.onValue; _set=fb.set; _push=fb.push;
-  _update=fb.update; _remove=fb.remove; _get=fb.get;
-  _createUser=fb.createUserWithEmailAndPassword;
-  _signIn=fb.signInWithEmailAndPassword;
-  _signOut=fb.signOut;
-  _onAuthChanged=fb.onAuthStateChanged;
-  _updateProfile=fb.updateProfile;
-
-  setupListeners();
-  _onAuthChanged(_auth, onAuthChange);
-});
-
-function R(path){ return _ref(_db, path); }
+// ══ FB INIT ═══════════════════════════════════════════════════
+// Compat API — disponible globalmente desde los scripts de arriba
+function R(path){ return window._DB.ref(path); }
 function toArr(val){
   if(!val) return [];
   if(Array.isArray(val)) return val.filter(Boolean);
-  return Object.entries(val).map(([k,v])=>({...v,_key:k}));
+  return Object.entries(val).map(([k,v])=>v?({...v,_key:k}):null).filter(Boolean);
 }
+function fbSet(r, d)    { return r.set(d); }
+function fbUpdate(r, d) { return r.update(d); }
+function fbPush(r, d)   { return r.push(d); }
+function fbGet(r)       { return r.once('value').then(s=>s.val()); }
+function fbOnValue(r,cb){ r.on('value', s=>cb(s.val())); }
+
+window.addEventListener('load', () => {
+  setupListeners();
+  window._AUTH.onAuthStateChanged(onAuthChange);
+});
 
 function setupListeners(){
-  _onValue(R('liga/primera'),     s=>{ D.p1=toArr(s.val()); renderTabla('p'); updateHero(); });
-  _onValue(R('liga/segunda'),     s=>{ D.p2=toArr(s.val()); renderTabla('s'); });
-  _onValue(R('liga/partidos_primera'), s=>{ D.j1=toArr(s.val()); if(currentJDiv==='primera') renderJornada(); });
-  _onValue(R('liga/partidos_segunda'), s=>{ D.j2=toArr(s.val()); if(currentJDiv==='segunda') renderJornada(); });
-  _onValue(R('liga/goleadores'),  s=>{ D.gol=toArr(s.val()); renderStatList('sg',D.gol,'goles'); });
-  _onValue(R('liga/asistencias'), s=>{ D.asi=toArr(s.val()); renderStatList('sa',D.asi,'asistencias'); });
-  _onValue(R('liga/cleansheets'), s=>{ D.cs=toArr(s.val()); renderStatList('sc',D.cs,'cs'); });
-  _onValue(R('liga/tarjetas'),    s=>{ D.tar=toArr(s.val()); renderTarjetas(); });
-  _onValue(R('liga/noticias'),    s=>{ D.news=toArr(s.val()); renderNoticias(); });
-  _onValue(R('liga/afiliados'),   s=>{ D.afil=toArr(s.val()); renderAfiliados(); });
-  _onValue(R('bot/teams'),        s=>{ const v=s.val(); D.eq=v?Object.values(v):[]; renderEquipos(); updateHero(); });
-  _onValue(R('bot/historial'),    s=>{ const v=s.val(); D.fich=v?Object.values(v).reverse():[]; renderFichajes(); });
-  _onValue(R('bot/stats'),        s=>{ const v=s.val(); D.stats=v||{}; if(curUser&&curUserData?.discordId) loadPsStats(curUserData.discordId); });
+  fbOnValue(R('liga/primera'),          v=>{ D.p1=toArr(v); renderTabla('p'); updateHero(); });
+  fbOnValue(R('liga/segunda'),          v=>{ D.p2=toArr(v); renderTabla('s'); });
+  fbOnValue(R('liga/partidos_primera'), v=>{ D.j1=toArr(v); if(currentJDiv==='primera') buildJSel(); });
+  fbOnValue(R('liga/partidos_segunda'), v=>{ D.j2=toArr(v); if(currentJDiv==='segunda') buildJSel(); });
+  fbOnValue(R('liga/goleadores'),       v=>{ D.gol=toArr(v); renderStatList('sg',D.gol,'goles'); });
+  fbOnValue(R('liga/asistencias'),      v=>{ D.asi=toArr(v); renderStatList('sa',D.asi,'asistencias'); });
+  fbOnValue(R('liga/cleansheets'),      v=>{ D.cs=toArr(v);  renderStatList('sc',D.cs,'cs'); });
+  fbOnValue(R('liga/tarjetas'),         v=>{ D.tar=toArr(v); renderTarjetas(); });
+  fbOnValue(R('liga/noticias'),         v=>{ D.news=toArr(v); renderNoticias(); });
+  fbOnValue(R('liga/afiliados'),        v=>{ D.afil=toArr(v); renderAfiliados(); });
+  fbOnValue(R('bot/equipos'),           v=>{ D.eq=v?Object.values(v).filter(Boolean):[]; renderEquipos(); updateHero(); });
+  fbOnValue(R('bot/historial'),         v=>{ D.fich=v?Object.values(v).reverse():[]; renderFichajes(); });
+  fbOnValue(R('bot/stats'),             v=>{ D.stats=v||{}; if(curUser&&curUserData?.discordId) loadPsStats(curUserData.discordId); });
 }
 
-// ════════════════════════════════════════════════════════════
-//  NAV
-// ════════════════════════════════════════════════════════════
+// ══ NAV ═══════════════════════════════════════════════════════
 function go(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('active'));
   document.getElementById('p-'+id).classList.add('active');
-  const nb = [...document.querySelectorAll('.nb')].find(b => b.getAttribute('onclick')?.includes("'"+id+"'"));
+  const nb=[...document.querySelectorAll('.nb')].find(b=>b.getAttribute('onclick')?.includes("'"+id+"'"));
   if(nb) nb.classList.add('active');
   window.scrollTo(0,0);
   if(id==='jornadas') buildJSel();
@@ -821,62 +618,48 @@ function cm(id){ document.getElementById(id).classList.remove('open'); }
 function om(id){ document.getElementById(id).classList.add('open'); }
 document.querySelectorAll('.moverlay').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o) o.classList.remove('open'); }));
 
-// Toast
 let tTimer;
 function toast(msg,type=''){
   const t=document.getElementById('toast');
   t.textContent=msg; t.className='show '+(type==='ok'?'ok':type==='err'?'err':'');
-  clearTimeout(tTimer); tTimer=setTimeout(()=>t.className='',3000);
+  clearTimeout(tTimer); tTimer=setTimeout(()=>t.className='',3200);
 }
 
-// ════════════════════════════════════════════════════════════
-//  TABLAS
-// ════════════════════════════════════════════════════════════
+// ══ TABLAS ════════════════════════════════════════════════════
 function renderTabla(which){
-  const data = which==='p' ? D.p1 : D.p2;
-  const el = document.getElementById(which==='p'?'t1':'t2');
-  if(!data.length){ el.innerHTML='<div class="empty"><div class="ei">📋</div><p>Sin datos de clasificación</p></div>'; return; }
-  let html = `<table><thead><tr>
-    <th>#</th><th style="text-align:left">Equipo</th>
-    <th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th>
-  </tr></thead><tbody>`;
+  const data=which==='p'?D.p1:D.p2, el=document.getElementById(which==='p'?'t1':'t2');
+  if(!data.length){ el.innerHTML='<div class="empty"><div class="ei">📋</div><p>Sin datos</p></div>'; return; }
+  let html=`<table><thead><tr><th>#</th><th style="text-align:left">Equipo</th><th>PJ</th><th>G</th><th>E</th><th>P</th><th>GF</th><th>GC</th><th>DG</th><th>Pts</th></tr></thead><tbody>`;
   data.forEach((t,i)=>{
-    const pos=i+1;
-    const pc=pos===1?' p1':pos===2?' p2':pos===3?' p3':'';
+    const pos=i+1, pc=pos===1?' p1':pos===2?' p2':pos===3?' p3':'';
     const badge=`<span class="pos${pc}">${pos}</span>`;
     const logoSrc=getTeamLogo(t.nombre||t.equipo||'');
-    const logoEl=logoSrc?`<img class="tsm" src="${logoSrc}" onerror="this.style.display='none'">` :'';
+    const logoEl=logoSrc?`<img class="tsm" src="${logoSrc}" onerror="this.style.display='none'">`:'';
     const nom=t.nombre||t.equipo||'–';
-    html+=`<tr>
-      <td>${badge}</td>
-      <td><div class="trow-info">${logoEl}<span class="tlink" onclick="openEq('${nom}')">${nom}</span></div></td>
-      <td>${t.pj||0}</td><td>${t.g||0}</td><td>${t.e||0}</td><td>${t.p||0}</td>
-      <td>${t.gf||0}</td><td>${t.gc||0}</td>
-      <td style="color:${((t.gf||0)-(t.gc||0))>0?'var(--green)':((t.gf||0)-(t.gc||0))<0?'var(--red)':'var(--muted)'}">${(t.gf||0)-(t.gc||0)}</td>
-      <td style="font-weight:800;color:var(--gold)">${t.pts||0}</td>
-    </tr>`;
+    const dg=(t.gf||0)-(t.gc||0);
+    html+=`<tr><td>${badge}</td><td><div class="trow-info">${logoEl}<span class="tlink" onclick="openEq('${nom}','')">${nom}</span></div></td><td>${t.pj||0}</td><td>${t.g||0}</td><td>${t.e||0}</td><td>${t.p||0}</td><td>${t.gf||0}</td><td>${t.gc||0}</td><td style="color:${dg>0?'var(--green)':dg<0?'var(--red)':'var(--muted)'}">${dg}</td><td style="font-weight:800;color:var(--gold)">${t.pts||0}</td></tr>`;
   });
   html+='</tbody></table>';
   el.innerHTML=html;
 }
 
 function getTeamLogo(nombre){
-  const eq=D.eq.find(e=>e.nombre===nombre||e.name===nombre);
+  const eq=D.eq.find(e=>(e.nombre||e.name)===nombre);
   return eq?.logo||null;
 }
-
-// Hero stats
-function updateHero(){
-  document.getElementById('h-eq').textContent = D.eq.length || (D.p1.length+D.p2.length) || '–';
-  const pts = (D.j1.filter(p=>p.resultado).length)+(D.j2.filter(p=>p.resultado).length);
-  document.getElementById('h-pts').textContent = pts || '–';
-  const goles = D.gol.reduce((s,p)=>s+(p.goles||0),0);
-  document.getElementById('h-gol').textContent = goles || '–';
+function getTeamByRoleId(roleId){
+  return D.eq.find(e=>e.roleId===roleId)||null;
 }
 
-// ════════════════════════════════════════════════════════════
-//  JORNADAS
-// ════════════════════════════════════════════════════════════
+function updateHero(){
+  document.getElementById('h-eq').textContent=D.eq.length||(D.p1.length+D.p2.length)||'–';
+  const pts=(D.j1.filter(p=>p.resultado).length)+(D.j2.filter(p=>p.resultado).length);
+  document.getElementById('h-pts').textContent=pts||'–';
+  const goles=D.gol.reduce((s,p)=>s+(p.goles||0),0);
+  document.getElementById('h-gol').textContent=goles||'–';
+}
+
+// ══ JORNADAS ═════════════════════════════════════════════════
 function switchJDiv(div,btn){
   currentJDiv=div;
   document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
@@ -887,6 +670,7 @@ function buildJSel(){
   const partidos=currentJDiv==='primera'?D.j1:D.j2;
   const jornadas=[...new Set(partidos.map(p=>p.jornada||1))].sort((a,b)=>a-b);
   const sel=document.getElementById('jsel');
+  if(!sel) return;
   const prev=sel.value;
   sel.innerHTML=jornadas.length?jornadas.map(j=>`<option value="${j}">Jornada ${j}</option>`):'<option value="1">Jornada 1</option>';
   if(prev&&jornadas.includes(parseInt(prev))) sel.value=prev;
@@ -894,50 +678,44 @@ function buildJSel(){
 }
 function renderJornada(){
   const partidos=currentJDiv==='primera'?D.j1:D.j2;
-  const jornada=parseInt(document.getElementById('jsel').value)||1;
+  const jornada=parseInt(document.getElementById('jsel')?.value)||1;
   const fil=partidos.filter(p=>(p.jornada||1)==jornada);
   const el=document.getElementById('jmatches');
   if(!fil.length){ el.innerHTML='<div class="empty"><div class="ei">⚽</div><p>Sin partidos en esta jornada</p></div>'; return; }
   el.innerHTML='<div class="matches">'+fil.map(p=>{
-    const logoL=p.logoLocal?`<img class="tsm" src="${p.logoLocal}" onerror="this.style.display='none'">` :'';
-    const logoV=p.logoVisitante?`<img class="tsm" src="${p.logoVisitante}" onerror="this.style.display='none'">` :'';
+    const lL=getTeamLogo(p.local||''), lV=getTeamLogo(p.visitante||'');
+    const imgL=lL?`<img class="tsm" src="${lL}" onerror="this.style.display='none'">`:'';
+    const imgV=lV?`<img class="tsm" src="${lV}" onerror="this.style.display='none'">`:'';
     const score=p.resultado?`<div class="mscore">${p.resultado}</div>`:`<div class="mscore pend">vs</div>`;
-    return `<div class="card match">${logoL}<div class="mteam">${logoL}<span>${p.local||'–'}</span></div>${score}<div class="mteam right"><span>${p.visitante||'–'}</span>${logoV}</div></div>`;
+    return `<div class="card match"><div class="mteam">${imgL}<span>${p.local||'–'}</span></div>${score}<div class="mteam right"><span>${p.visitante||'–'}</span>${imgV}</div></div>`;
   }).join('')+'</div>';
 }
 
-// ════════════════════════════════════════════════════════════
-//  STATS
-// ════════════════════════════════════════════════════════════
-function renderStatList(elId, data, field){
+// ══ STATS ════════════════════════════════════════════════════
+function renderStatList(elId,data,field){
   const el=document.getElementById(elId);
-  if(!data.length){ el.innerHTML='<div class="empty" style="padding:20px"><p>Sin datos</p></div>'; return; }
+  if(!data.length){ el.innerHTML='<div class="empty" style="padding:18px"><p>Sin datos</p></div>'; return; }
   const sorted=[...data].sort((a,b)=>(b[field]||0)-(a[field]||0)).slice(0,10);
   el.innerHTML=sorted.map((p,i)=>{
-    const nom=p.nombre||p.jugador||'?';
-    const val=p[field]||0;
+    const nom=p.nombre||p.jugador||'?', val=p[field]||0;
     const av=p.avatar||`https://cdn.discordapp.com/embed/avatars/${i%6}.png`;
-    return `<div class="stat-row" onclick="openJug('${nom}','${p.discordId||''}','${p.equipo||''}')">
+    return `<div class="stat-row" onclick="openJugByName('${nom}','${p.discordId||''}','${p.equipo||''}')">
       <div class="srl"><span class="srpos">${i+1}</span><img class="sravatar" src="${av}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'"><span>${nom}</span></div>
       <span class="srval">${val}</span>
     </div>`;
   }).join('');
 }
 
-// ════════════════════════════════════════════════════════════
-//  TARJETAS
-// ════════════════════════════════════════════════════════════
+// ══ TARJETAS ═════════════════════════════════════════════════
 function renderTarjetas(){
   const el=document.getElementById('tarjetas-wrap');
   if(!D.tar.length){ el.innerHTML='<div class="empty"><div class="ei">🟨</div><p>Sin tarjetas registradas</p></div>'; return; }
   el.innerHTML='<div class="tcards">'+D.tar.map(t=>{
     const av=t.avatar||'https://cdn.discordapp.com/embed/avatars/0.png';
     const nom=t.jugador||t.nombre||'–';
-    return `<div class="card tc chover" onclick="openJug('${nom}','${t.discordId||''}','${t.equipo||''}')">
+    return `<div class="card tc chover" onclick="openJugByName('${nom}','${t.discordId||''}','${t.equipo||''}')">
       <img class="tc-av" src="${av}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
-      <div class="tc-info">
-        <div class="tc-name">${nom}</div>
-        <div class="tc-team">${t.equipo||'–'}</div>
+      <div class="tc-info"><div class="tc-name">${nom}</div><div class="tc-team">${t.equipo||'–'}</div>
         <div class="tc-chips">
           ${(t.amarillas||t.ta||0)>0?`<span class="chip-y">🟨 ${t.amarillas||t.ta||0}</span>`:''}
           ${(t.rojas||t.tr||0)>0?`<span class="chip-r">🟥 ${t.rojas||t.tr||0}</span>`:''}
@@ -947,172 +725,169 @@ function renderTarjetas(){
   }).join('')+'</div>';
 }
 
-// ════════════════════════════════════════════════════════════
-//  NOTICIAS
-// ════════════════════════════════════════════════════════════
+// ══ NOTICIAS ═════════════════════════════════════════════════
 function renderNoticias(){
   const el=document.getElementById('noticias-wrap');
-  if(!D.news.length){ el.innerHTML='<div class="empty"><div class="ei">📰</div><p>Sin noticias publicadas</p></div>'; return; }
+  if(!D.news.length){ el.innerHTML='<div class="empty"><div class="ei">📰</div><p>Sin noticias</p></div>'; return; }
   const sorted=[...D.news].sort((a,b)=>new Date(b.fecha||0)-new Date(a.fecha||0));
   el.innerHTML='<div class="ngrid">'+sorted.map(n=>{
     const imgEl=n.imagen?`<img class="nimg" src="${n.imagen}" onerror="this.outerHTML='<div class=\\'nimg-ph\\'>📰</div>'">`:'<div class="nimg-ph">📰</div>';
     const tagEl=n.tag?`<span class="ntag">${n.tag}</span>`:'';
-    const linkEl=n.link?`<a class="nlink" href="${n.link}" target="_blank">Leer más →</a>`:'';
-    return `<div class="card ncard chover">
-      ${imgEl}
-      <div class="nbody">${tagEl}<div class="ntitle">${n.titulo||'Sin título'}</div><div class="ndesc">${n.descripcion||''}</div>
-      <div class="nfoot"><span class="ndate">${n.fecha||''}</span>${linkEl}</div></div>
-    </div>`;
+    const linkEl=n.link?`<a class="nlink" href="${n.link}" target="_blank">Leer mas →</a>`:'';
+    return `<div class="card ncard chover">${imgEl}<div class="nbody">${tagEl}<div class="ntitle">${n.titulo||'Sin titulo'}</div><div class="ndesc">${n.descripcion||''}</div><div class="nfoot"><span class="ndate">${n.fecha||''}</span>${linkEl}</div></div></div>`;
   }).join('')+'</div>';
 }
 
-// ════════════════════════════════════════════════════════════
-//  AFILIADOS
-// ════════════════════════════════════════════════════════════
+// ══ AFILIADOS ════════════════════════════════════════════════
 function renderAfiliados(){
   const el=document.getElementById('afiliados-wrap');
-  if(!D.afil.length){ el.innerHTML='<div class="empty"><div class="ei">🤝</div><p>Sin afiliados registrados</p></div>'; return; }
+  if(!D.afil.length){ el.innerHTML='<div class="empty"><div class="ei">🤝</div><p>Sin afiliados</p></div>'; return; }
   el.innerHTML='<div class="agrid">'+D.afil.map(a=>{
-    const logoEl=a.imagen?`<img class="af-logo" src="${a.imagen}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">`:`<div class="af-logo" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem">🤝</div>`;
+    const logoEl=a.imagen?`<img class="af-logo" src="${a.imagen}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">`:`<div class="af-logo" style="display:flex;align-items:center;justify-content:center;font-size:1.4rem">🤝</div>`;
     const btns=[
-      a.url?`<a href="${a.url}" target="_blank"><button class="bsm">🌐 Web</button></a>`:'',
+      a.url?`<a href="${a.url}" target="_blank"><button class="bsm">Web</button></a>`:'',
       a.discord?`<a href="https://discord.gg/${a.discord}" target="_blank"><button class="bsm">Discord</button></a>`:''
     ].filter(Boolean).join('');
-    return `<div class="card afcard chover">
-      ${logoEl}<div class="af-nom">${a.nombre||'–'}</div>
-      <div class="af-desc">${a.descripcion||''}</div>
-      ${btns?`<div class="af-btns">${btns}</div>`:''}
-    </div>`;
+    return `<div class="card afcard chover">${logoEl}<div class="af-nom">${a.nombre||'–'}</div><div class="af-desc">${a.descripcion||''}</div>${btns?`<div class="af-btns">${btns}</div>`:''}</div>`;
   }).join('')+'</div>';
 }
 
-// ════════════════════════════════════════════════════════════
-//  EQUIPOS
-// ════════════════════════════════════════════════════════════
+// ══ EQUIPOS ══════════════════════════════════════════════════
 function renderEquipos(){
   const el=document.getElementById('equipos-wrap');
-  if(!D.eq.length){ el.innerHTML='<div class="empty"><div class="ei">🏟️</div><p>Sin equipos registrados</p></div>'; return; }
+  if(!D.eq.length){ el.innerHTML='<div class="empty"><div class="ei">🏟</div><p>Sin equipos registrados</p></div>'; return; }
   el.innerHTML='<div class="gfit">'+D.eq.map(e=>{
-    const logoEl=e.logo?`<img class="eq-logo" src="${e.logo}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">`:`<div class="eq-logo" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem">⚽</div>`;
-    return `<div class="card eqcard chover" onclick="openEq('${e.nombre||e.name||''}','${e.roleId||''}')">
-      ${logoEl}<div class="eq-nom">${e.nombre||e.name||'–'}</div><div class="eq-abrev">${e.abrev||'–'}</div>
-    </div>`;
+    const logoEl=e.logo?`<img class="eq-logo" src="${e.logo}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">`:`<div class="eq-logo" style="display:flex;align-items:center;justify-content:center;font-size:1.4rem">⚽</div>`;
+    const nom=e.nombre||e.name||'–';
+    return `<div class="card eqcard chover" onclick="openEq('${nom}','${e.roleId||''}')">${logoEl}<div class="eq-nom">${nom}</div><div class="eq-abrev">${e.abrev||'–'}</div></div>`;
   }).join('')+'</div>';
 }
 
-// ════════════════════════════════════════════════════════════
-//  FICHAJES
-// ════════════════════════════════════════════════════════════
+// ══ FICHAJES (mercado) ═══════════════════════════════════════
 function renderFichajes(){
   const el=document.getElementById('fichajes-wrap');
-  const tipos=['FICHAJE','TRASPASO','BAJA'];
+  const tipos=['FICHAJE','TRASPASO','BAJA','RENUNCIA'];
   const fil=D.fich.filter(f=>tipos.includes(f.tipo));
-  if(!fil.length){ el.innerHTML='<div class="empty"><div class="ei">📋</div><p>Sin movimientos registrados</p></div>'; return; }
+  if(!fil.length){ el.innerHTML='<div class="empty"><div class="ei">📋</div><p>Sin movimientos</p></div>'; return; }
   el.innerHTML='<div class="flist">'+fil.slice(0,60).map(f=>{
-    const av=f.avatar||'https://cdn.discordapp.com/embed/avatars/0.png';
-    // Try to find team logo
-    const teamData=D.eq.find(e=>e.roleId===f.teamRoleId);
-    const logoEl=teamData?.logo?`<span style="color:var(--gold);margin:0 4px">→</span><img class="fav-team" src="${teamData.logo}" onerror="this.style.display='none'">` :'';
+    // Avatar del jugador (desde cuentas si disponible)
+    const av='https://cdn.discordapp.com/embed/avatars/0.png';
+    const teamData=D.eq.find(e=>e.roleId===f.equipoId);
+    const teamLogoEl=teamData?.logo?`<span class="farrow">→</span><img class="fav-team" src="${teamData.logo}" onerror="this.style.display='none'">`:'';
     const bc=f.tipo==='FICHAJE'?'bf':f.tipo==='TRASPASO'?'bt':'bb';
     const fecha=f.fecha?new Date(f.fecha).toLocaleDateString('es-ES'):'';
+    const jName=f.discordTag||f.jugadorId||'Jugador';
     return `<div class="fitem">
-      <img class="fav" src="${av}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
-      ${logoEl}
-      <div class="ftxt"><div class="ftitle">${f.jugador||f.nombre||'Jugador'}</div><div class="fsub">${f.descripcion||''}</div></div>
+      <img class="fav" id="fav-${f.jugadorId||f._key}" src="${av}" alt="" onerror="this.src='${av}'">
+      ${teamLogoEl}
+      <div class="ftxt"><div class="ftitle">${jName}</div><div class="fsub">${f.desc||''}</div></div>
       <span class="fbadge ${bc}">${f.tipo}</span>
       <span class="fdate">${fecha}</span>
     </div>`;
   }).join('')+'</div>';
+  // Cargar avatares en background
+  setTimeout(loadFichajeAvatars, 300);
 }
 
-// ════════════════════════════════════════════════════════════
-//  MODAL JUGADOR
-// ════════════════════════════════════════════════════════════
-async function openJug(nombre, discordId, equipo){
-  let stats = {};
-  // Try bot/stats first
-  if(discordId && D.stats[discordId]) stats=D.stats[discordId];
-  else {
-    // Fallback: scrape from arrays
+async function loadFichajeAvatars(){
+  const fil=D.fich.filter(f=>['FICHAJE','TRASPASO','BAJA','RENUNCIA'].includes(f.tipo)).slice(0,60);
+  const done=new Set();
+  for(const f of fil){
+    const id=f.jugadorId;
+    if(!id||done.has(id)) continue;
+    done.add(id);
+    try{
+      const cData=await fbGet(R(`bot/cuentas/${id}`));
+      if(cData?.webUid){
+        const uData=await fbGet(R(`usuarios/${cData.webUid}`));
+        if(uData?.avatar){
+          const imgs=document.querySelectorAll(`#fav-${id}`);
+          imgs.forEach(img=>img.src=uData.avatar);
+        }
+      }
+    }catch(e){}
+  }
+}
+
+// ══ MODAL JUGADOR ═════════════════════════════════════════════
+async function openJugByName(nombre, discordId, equipo){
+  let stats={};
+  if(discordId&&D.stats[discordId]) stats=D.stats[discordId];
+  else{
     const g=D.gol.find(p=>p.nombre===nombre||p.jugador===nombre);
     const a=D.asi.find(p=>p.nombre===nombre||p.jugador===nombre);
     const c=D.cs.find(p=>p.nombre===nombre||p.jugador===nombre);
-    stats={ goles:g?g.goles||0:0, asistencias:a?a.asistencias||0:0, cs:c?c.cs||0:0, partidosJugados:0, mvps:0, tarjetasAmarillas:0 };
+    stats={goles:g?g.goles||0:0,asistencias:a?a.asistencias||0:0,cs:c?c.cs||0:0,partidos:0,mvps:0,amarillas:0};
   }
-
   let av='https://cdn.discordapp.com/embed/avatars/0.png';
-  if(discordId && _db){
+  if(discordId){
     try{
-      const cSnap=await _get(R(`bot/cuentas/${discordId}`));
-      const cData=cSnap.val();
-      if(cData?.uid){
-        const uSnap=await _get(R(`usuarios/${cData.uid}`));
-        const uData=uSnap.val();
+      const cData=await fbGet(R(`bot/cuentas/${discordId}`));
+      if(cData?.webUid){
+        const uData=await fbGet(R(`usuarios/${cData.webUid}`));
         if(uData?.avatar) av=uData.avatar;
       }
     }catch(e){}
   }
-
   document.getElementById('pj-av').src=av;
   document.getElementById('pj-name').textContent=nombre||'–';
   document.getElementById('pj-team').textContent=equipo||'–';
   document.getElementById('pj-g').textContent=stats.goles||0;
   document.getElementById('pj-a').textContent=stats.asistencias||0;
   document.getElementById('pj-c').textContent=stats.cs||0;
-  document.getElementById('pj-p').textContent=stats.partidosJugados||0;
+  document.getElementById('pj-p').textContent=stats.partidos||stats.partidosJugados||0;
   document.getElementById('pj-m').textContent=stats.mvps||0;
-  document.getElementById('pj-t').textContent=stats.tarjetasAmarillas||0;
-  document.getElementById('pj-dc').innerHTML=discordId?`<span class="dbadge">🎮 Discord vinculado</span>`:'';
-
-  // Sanciones de tarjetas
+  document.getElementById('pj-t').textContent=stats.amarillas||stats.tarjetasAmarillas||0;
+  document.getElementById('pj-dc').innerHTML=discordId?`<span class="dbadge">Discord vinculado</span>`:'';
   const san=D.tar.filter(t=>t.jugador===nombre||t.nombre===nombre);
   const sanEl=document.getElementById('pj-san');
-  sanEl.innerHTML=san.length?`<h4 style="color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:1px;margin:14px 0 8px">Tarjetas</h4>`+
-    san.map(s=>`<div class="sanitem"><span>${s.razon||s.motivo||'Sin motivo'}</span><span>${(s.amarillas||s.ta||0)>0?'🟨':''}${(s.rojas||s.tr||0)>0?'🟥':''}</span></div>`).join(''):'';
-
+  sanEl.innerHTML=san.length?`<h4 style="color:var(--muted);font-size:.73rem;text-transform:uppercase;letter-spacing:1px;margin:12px 0 7px">Tarjetas</h4>`+san.map(s=>`<div class="sanitem"><span>${s.razon||s.motivo||'Sin motivo'}</span><span>${(s.amarillas||s.ta||0)>0?'🟨':''}${(s.rojas||s.tr||0)>0?'🟥':''}</span></div>`).join(''):'';
   om('m-jug');
 }
 
-// ════════════════════════════════════════════════════════════
-//  MODAL EQUIPO
-// ════════════════════════════════════════════════════════════
+// ══ MODAL EQUIPO ══════════════════════════════════════════════
 async function openEq(nombre, roleId){
-  const eq=D.eq.find(e=>e.nombre===nombre||e.name===nombre||e.roleId===roleId)
-    || D.p1.find(e=>e.nombre===nombre||e.equipo===nombre)
-    || D.p2.find(e=>e.nombre===nombre||e.equipo===nombre)
-    || {};
+  const eq=D.eq.find(e=>e.roleId===roleId||(e.nombre||e.name)===nombre)||{};
   document.getElementById('eq-lg').src=eq.logo||'https://cdn.discordapp.com/embed/avatars/0.png';
-  document.getElementById('eq-n').textContent=eq.nombre||eq.name||eq.equipo||nombre||'–';
+  document.getElementById('eq-n').textContent=eq.nombre||eq.name||nombre||'–';
   document.getElementById('eq-ab').textContent=eq.abrev||'–';
-
   const plEl=document.getElementById('eq-pl');
-
-  // Try to get actual members from firebase
-  let plantilla=[];
-  if(eq.roleId && _db){
-    try{
-      const fSnap=await _get(R('bot/fichajes'));
-      const fVal=fSnap.val();
-      if(fVal){
-        plantilla=Object.values(fVal).filter(f=>f.teamRoleId===eq.roleId);
-      }
-    }catch(e){}
-  }
-
-  if(plantilla.length){
-    plEl.innerHTML=plantilla.map(f=>`<div class="pmember">
-      <img class="pav2" src="https://cdn.discordapp.com/embed/avatars/0.png" alt="">
-      <div><div class="pname">${f.jugador||f.jugadorId||'–'}</div><div class="prole">Jugador</div></div>
-    </div>`).join('');
-  } else {
-    plEl.innerHTML='<div style="color:var(--muted);font-size:.85rem">Sin datos de plantilla del bot</div>';
-  }
+  plEl.innerHTML='<div class="loading"><div class="spin"></div></div>';
   om('m-eq');
+  try{
+    const fVal=await fbGet(R('bot/fichajes'));
+    const rId=eq.roleId||roleId;
+    if(fVal&&rId){
+      const miembros=Object.values(fVal).filter(f=>f.equipoRoleId===rId);
+      if(miembros.length){
+        let html='';
+        for(const f of miembros){
+          let av='https://cdn.discordapp.com/embed/avatars/0.png';
+          const tag=f.discordTag||f.id||'–';
+          try{
+            if(f.id){
+              const cData=await fbGet(R(`bot/cuentas/${f.id}`));
+              if(cData?.webUid){
+                const uData=await fbGet(R(`usuarios/${cData.webUid}`));
+                if(uData?.avatar) av=uData.avatar;
+              }
+            }
+          }catch(e){}
+          html+=`<div class="pmember"><img class="pav2" src="${av}" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'"><div><div class="pname">${tag}</div><div class="prole">Jugador</div></div></div>`;
+        }
+        plEl.innerHTML=html;
+      } else {
+        plEl.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin jugadores registrados</div>';
+      }
+    } else {
+      plEl.innerHTML='<div style="color:var(--muted);font-size:.83rem">Sin datos de plantilla</div>';
+    }
+  }catch(e){
+    plEl.innerHTML='<div style="color:var(--muted);font-size:.83rem">Error al cargar plantilla</div>';
+  }
 }
 
-// ════════════════════════════════════════════════════════════
-//  AUTH
-// ════════════════════════════════════════════════════════════
+// ══ AUTH ══════════════════════════════════════════════════════
 async function onAuthChange(user){
   curUser=user;
   if(user){
@@ -1131,31 +906,29 @@ async function onAuthChange(user){
 
 async function loadUserData(uid){
   try{
-    const snap=await _get(R(`usuarios/${uid}`));
-    let data=snap.val()||{};
-    curUserData=data;
-    if(!data.uid){
+    let data=await fbGet(R(`usuarios/${uid}`));
+    if(!data){
       const codigo=uid.substring(0,8).toUpperCase();
       data={uid,email:curUser.email,nombre:curUser.displayName||'',avatar:'',discordId:'',codigo,createdAt:Date.now()};
-      await _set(R(`usuarios/${uid}`),data);
-      curUserData=data;
+      await fbSet(R(`usuarios/${uid}`),data);
     }
+    curUserData=data;
     document.getElementById('pnom').textContent=data.nombre||curUser.email;
     document.getElementById('pmail').textContent=curUser.email;
     document.getElementById('edit-nom').value=data.nombre||'';
-    document.getElementById('uid-code').textContent=data.codigo||uid.substring(0,8).toUpperCase();
+    const codigo=data.codigo||uid.substring(0,8).toUpperCase();
+    document.getElementById('uid-code').textContent=codigo;
     if(data.avatar){
       document.getElementById('pav').src=data.avatar;
       document.getElementById('avatar-img').src=data.avatar;
     }
     if(data.discordId){
       document.getElementById('pdc').style.display='block';
-      document.getElementById('pdc').innerHTML=`<span class="dbadge">🎮 ${data.discordTag||data.discordId}</span>`;
+      document.getElementById('pdc').innerHTML=`<span class="dbadge">Discord: ${data.discordTag||data.discordId}</span>`;
       document.getElementById('vbox').style.display='none';
       loadPsStats(data.discordId);
     }
-    // Save code for bot to link
-    await _set(R(`bot/vinculacion_pendiente/${data.codigo||uid.substring(0,8).toUpperCase()}`),{uid,email:curUser.email,ts:Date.now()});
+    await fbSet(R(`bot/vinculacion_pendiente/${codigo}`),{uid,email:curUser.email,ts:Date.now()});
   }catch(e){ console.error(e); }
 }
 
@@ -1165,67 +938,53 @@ function loadPsStats(discordId){
   document.getElementById('ps-g').textContent=s.goles||0;
   document.getElementById('ps-a').textContent=s.asistencias||0;
   document.getElementById('ps-c').textContent=s.cs||0;
-  document.getElementById('ps-p').textContent=s.partidosJugados||0;
+  document.getElementById('ps-p').textContent=s.partidos||s.partidosJugados||0;
   document.getElementById('ps-m').textContent=s.mvps||0;
-  document.getElementById('ps-t').textContent=s.tarjetasAmarillas||0;
+  document.getElementById('ps-t').textContent=s.amarillas||s.tarjetasAmarillas||0;
 }
 
 async function doLogin(){
-  const e=document.getElementById('le').value.trim();
-  const p=document.getElementById('lp2').value;
+  const e=document.getElementById('le').value.trim(), p=document.getElementById('lp2').value;
   if(!e||!p){ toast('Rellena todos los campos','err'); return; }
-  try{ await _signIn(_auth,e,p); toast('Bienvenido','ok'); }
-  catch(err){ toast('Error: '+(err.code==='auth/user-not-found'?'Usuario no encontrado':err.code==='auth/wrong-password'?'Contraseña incorrecta':err.message),'err'); }
+  try{ await window._AUTH.signInWithEmailAndPassword(e,p); toast('Bienvenido','ok'); }
+  catch(err){ toast('Error: '+(err.code==='auth/user-not-found'?'Usuario no encontrado':err.code==='auth/wrong-password'?'Contrasena incorrecta':err.message),'err'); }
 }
-
 async function doRegister(){
-  const n=document.getElementById('rn').value.trim();
-  const e=document.getElementById('re').value.trim();
-  const p=document.getElementById('rpw').value;
+  const n=document.getElementById('rn').value.trim(), e=document.getElementById('re').value.trim(), p=document.getElementById('rpw').value;
   if(!n||!e||!p){ toast('Rellena todos los campos','err'); return; }
-  if(p.length<6){ toast('Contraseña mínimo 6 caracteres','err'); return; }
+  if(p.length<6){ toast('Contrasena minimo 6 caracteres','err'); return; }
   try{
-    const cred=await _createUser(_auth,e,p);
-    await _updateProfile(cred.user,{displayName:n});
+    const cred=await window._AUTH.createUserWithEmailAndPassword(e,p);
+    await cred.user.updateProfile({displayName:n});
     toast('Cuenta creada','ok');
-  } catch(err){ toast('Error: '+(err.code==='auth/email-already-in-use'?'Email ya en uso':err.message),'err'); }
+  }catch(err){ toast('Error: '+(err.code==='auth/email-already-in-use'?'Email ya en uso':err.message),'err'); }
 }
-
-async function doLogout(){ await _signOut(_auth); toast('Sesión cerrada'); }
-function toggleAuth(reg){
-  document.getElementById('lp').style.display=reg?'none':'block';
-  document.getElementById('rp').style.display=reg?'block':'none';
-}
+async function doLogout(){ await window._AUTH.signOut(); toast('Sesion cerrada'); }
+function toggleAuth(reg){ document.getElementById('lp').style.display=reg?'none':'block'; document.getElementById('rp').style.display=reg?'block':'none'; }
 async function saveNom(){
   if(!curUser) return;
   const nom=document.getElementById('edit-nom').value.trim();
-  try{
-    await _update(R(`usuarios/${curUser.uid}`),{nombre:nom});
-    await _updateProfile(curUser,{displayName:nom});
-    document.getElementById('pnom').textContent=nom;
-    toast('Nombre guardado','ok');
-  }catch(e){ toast('Error al guardar','err'); }
+  try{ await fbUpdate(R(`usuarios/${curUser.uid}`),{nombre:nom}); await curUser.updateProfile({displayName:nom}); document.getElementById('pnom').textContent=nom; toast('Nombre guardado','ok'); }
+  catch(e){ toast('Error al guardar','err'); }
 }
 async function uploadAvatar(event){
   const file=event.target.files[0];
   if(!file||!curUser) return;
-  if(file.size>600000){ toast('Imagen máx 600KB','err'); return; }
+  if(file.size>600000){ toast('Imagen max 600KB','err'); return; }
   const reader=new FileReader();
   reader.onload=async(e)=>{
     const b64=e.target.result;
     try{
-      await _update(R(`usuarios/${curUser.uid}`),{avatar:b64});
+      await fbUpdate(R(`usuarios/${curUser.uid}`),{avatar:b64});
       document.getElementById('pav').src=b64;
       document.getElementById('avatar-img').src=b64;
       toast('Avatar actualizado','ok');
-    }catch(){ toast('Error al guardar avatar','err'); }
+    }catch(err){ toast('Error al guardar avatar','err'); }
   };
   reader.readAsDataURL(file);
 }
 
-// ════════════════════════════════════════════════════════════
-//  ADMIN PANEL
-// ════════════════════════════════════════════════════════════
+// ══ ADMIN ═════════════════════════════════════════════════════
 function openAdmin(){ om('m-admin'); }
 function checkAdminPw(){
   const pw=document.getElementById('adm-pw').value;
@@ -1234,21 +993,21 @@ function checkAdminPw(){
     document.getElementById('ap-pass').style.display='none';
     document.getElementById('ap-content').style.display='block';
     buildAdminPanel();
-  } else { toast('Contraseña incorrecta','err'); }
+  } else { toast('Contrasena incorrecta','err'); }
 }
 
 const ADM_SECTIONS=[
-  {id:'adm-t1',label:'📊 Tabla Primera'},
-  {id:'adm-t2',label:'📊 Tabla Segunda'},
-  {id:'adm-j1',label:'⚽ Jornadas Primera'},
-  {id:'adm-j2',label:'⚽ Jornadas Segunda'},
-  {id:'adm-sg',label:'🥅 Goleadores'},
-  {id:'adm-sa',label:'🎯 Asistencias'},
-  {id:'adm-sc',label:'🧤 Clean Sheets'},
-  {id:'adm-tar',label:'🟨 Tarjetas'},
-  {id:'adm-news',label:'📰 Noticias'},
-  {id:'adm-afil',label:'🤝 Afiliados'},
-  {id:'adm-ann',label:'📢 Anuncio al Bot'},
+  {id:'adm-t1',label:'Tabla Primera'},
+  {id:'adm-t2',label:'Tabla Segunda'},
+  {id:'adm-j1',label:'Jornadas Primera'},
+  {id:'adm-j2',label:'Jornadas Segunda'},
+  {id:'adm-sg',label:'Goleadores'},
+  {id:'adm-sa',label:'Asistencias'},
+  {id:'adm-sc',label:'Clean Sheets'},
+  {id:'adm-tar',label:'Tarjetas'},
+  {id:'adm-news',label:'Noticias'},
+  {id:'adm-afil',label:'Afiliados'},
+  {id:'adm-ann',label:'Anuncio via Bot'},
 ];
 
 function buildAdminPanel(){
@@ -1284,277 +1043,178 @@ function loadAdmSection(id){
   if(m[id]) m[id]();
 }
 
-// ─ Tabla editor ─
 function buildTEditor(el,div,data){
-  const R2=['nombre','pj','g','e','p','gf','gc','pts'];
-  const LB=['Equipo','PJ','G','E','P','GF','GC','Pts'];
-  let rows=data.length?JSON.parse(JSON.stringify(data)):[{}];
-  const k=`_TR_${div}`;
-  window[k]=rows;
-
-  function render(){
-    el.innerHTML=`
-    <div style="overflow-x:auto">
-      <table style="width:100%;border-collapse:collapse">
-        <tr>${LB.map(l=>`<th style="color:var(--muted);font-size:.66rem;font-weight:700;text-transform:uppercase;padding:4px 5px">${l}</th>`).join('')}<th></th></tr>
-        ${window[k].map((r,i)=>`<tr>${R2.map(f=>`<td style="padding:3px"><input class="adm-inp" value="${r[f]||''}" oninput="window['${k}'][${i}]['${f}']=this.value" placeholder="${f}" style="${f==='nombre'?'width:90px':'width:44px'}"></td>`).join('')}<td><button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('adm-${div==='primera'?'t1':'t2'}')">✕</button></td></tr>`).join('')}
-      </table>
-    </div>
-    <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-      <button class="btn-add" onclick="window['${k}'].push({});loadAdmSection('adm-${div==='primera'?'t1':'t2'}')">+ Equipo</button>
-      <button class="btn-sv" onclick="saveTEditor('${div}')">💾 Guardar</button>
-      <button class="btn-rst" onclick="if(confirm('¿Resetear?'))_set(R('liga/${div}'),[]).then(()=>toast('Reseteado','ok'))">🗑️ Reset</button>
-    </div>`;
-  }
-  render();
+  const R2=['nombre','pj','g','e','p','gf','gc','pts'],LB=['Equipo','PJ','G','E','P','GF','GC','Pts'];
+  const k=`_TR_${div}`; window[k]=data.length?JSON.parse(JSON.stringify(data)):[{}];
+  const secId=div==='primera'?'adm-t1':'adm-t2';
+  el.innerHTML=`<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">
+    <tr>${LB.map(l=>`<th style="color:var(--muted);font-size:.64rem;font-weight:700;text-transform:uppercase;padding:3px 4px">${l}</th>`).join('')}<th></th></tr>
+    ${window[k].map((r,i)=>`<tr>${R2.map(f=>`<td style="padding:2px"><input class="adm-inp" value="${r[f]||''}" oninput="window['${k}'][${i}]['${f}']=this.value" placeholder="${f}" style="${f==='nombre'?'width:85px':'width:40px'}"></td>`).join('')}<td><button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('${secId}')">✕</button></td></tr>`).join('')}
+  </table></div>
+  <div style="margin-top:7px;display:flex;gap:5px;flex-wrap:wrap">
+    <button class="btn-add" onclick="window['${k}'].push({});loadAdmSection('${secId}')">+ Equipo</button>
+    <button class="btn-sv" onclick="saveTEditor('${div}')">Guardar</button>
+  </div>`;
 }
-
 window.saveTEditor=async(div)=>{
   const k=`_TR_${div}`;
-  const rows=window[k]||[];
-  try{
-    await _set(R(`liga/${div}`),rows.map(r=>({
-      nombre:r.nombre||'',pj:+r.pj||0,g:+r.g||0,e:+r.e||0,
-      p:+r.p||0,gf:+r.gf||0,gc:+r.gc||0,pts:+r.pts||0
-    })));
-    toast('Tabla guardada','ok');
-  }catch(e){ toast('Error','err'); }
+  try{ await fbSet(R(`liga/${div}`),(window[k]||[]).map(r=>({nombre:r.nombre||'',pj:+r.pj||0,g:+r.g||0,e:+r.e||0,p:+r.p||0,gf:+r.gf||0,gc:+r.gc||0,pts:+r.pts||0}))); toast('Tabla guardada','ok'); }
+  catch(e){ toast('Error','err'); }
 };
 
-// ─ Jornada editor ─
 function buildJEditor(el,div,data){
-  const k=`_JR_${div}`;
-  window[k]=data.length?JSON.parse(JSON.stringify(data)):[];
-  const jkey=div==='primera'?'j1':'j2';
-
-  function render(){
-    el.innerHTML=`
-      <div id="jrows-${div}">${(window[k]||[]).map((r,i)=>`
-        <div style="display:flex;gap:6px;align-items:center;margin-bottom:5px;flex-wrap:wrap">
-          <input class="adm-inp" type="number" value="${r.jornada||1}" placeholder="J" style="width:45px" oninput="window['${k}'][${i}].jornada=+this.value">
-          <input class="adm-inp" value="${r.local||''}" placeholder="Local" style="width:110px" oninput="window['${k}'][${i}].local=this.value">
-          <input class="adm-inp" value="${r.visitante||''}" placeholder="Visitante" style="width:110px" oninput="window['${k}'][${i}].visitante=this.value">
-          <input class="adm-inp" value="${r.resultado||''}" placeholder="3-1" style="width:70px" oninput="window['${k}'][${i}].resultado=this.value">
-          <button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('adm-${jkey}')">✕</button>
-        </div>`).join('')}
-      </div>
-      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn-add" onclick="window['${k}'].push({jornada:1,local:'',visitante:'',resultado:''});loadAdmSection('adm-${jkey}')">+ Partido</button>
-        <button class="btn-sv" onclick="saveJEditor('${div}')">💾 Guardar</button>
-      </div>`;
-  }
-  render();
+  const k=`_JR_${div}`; window[k]=data.length?JSON.parse(JSON.stringify(data)):[];
+  const secId=div==='primera'?'adm-j1':'adm-j2';
+  el.innerHTML=`<div>${(window[k]||[]).map((r,i)=>`
+    <div style="display:flex;gap:5px;align-items:center;margin-bottom:4px;flex-wrap:wrap">
+      <input class="adm-inp" type="number" value="${r.jornada||1}" placeholder="J" style="width:40px" oninput="window['${k}'][${i}].jornada=+this.value">
+      <input class="adm-inp" value="${r.local||''}" placeholder="Local" style="width:105px" oninput="window['${k}'][${i}].local=this.value">
+      <input class="adm-inp" value="${r.visitante||''}" placeholder="Visitante" style="width:105px" oninput="window['${k}'][${i}].visitante=this.value">
+      <input class="adm-inp" value="${r.resultado||''}" placeholder="3-1" style="width:65px" oninput="window['${k}'][${i}].resultado=this.value">
+      <button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('${secId}')">✕</button>
+    </div>`).join('')}</div>
+  <div style="margin-top:7px;display:flex;gap:5px">
+    <button class="btn-add" onclick="window['${k}'].push({jornada:1,local:'',visitante:'',resultado:''});loadAdmSection('${secId}')">+ Partido</button>
+    <button class="btn-sv" onclick="saveJEditor('${div}')">Guardar</button>
+  </div>`;
 }
-
 window.saveJEditor=async(div)=>{
   const k=`_JR_${div}`;
-  const key=`partidos_${div}`;
-  try{
-    await _set(R(`liga/${key}`),(window[k]||[]).map(r=>({...r,jornada:+r.jornada||1})));
-    toast('Jornadas guardadas','ok');
-  }catch(e){ toast('Error','err'); }
+  try{ await fbSet(R(`liga/partidos_${div}`),(window[k]||[]).map(r=>({...r,jornada:+r.jornada||1}))); toast('Jornadas guardadas','ok'); }
+  catch(e){ toast('Error','err'); }
 };
 
-// ─ Stat editor ─
 function buildSEditor(el,key,data,field){
-  const k=`_SR_${key}`;
+  const k=`_SR_${key}`, secId={'goleadores':'adm-sg','asistencias':'adm-sa','cleansheets':'adm-sc'}[key];
   window[k]=data.length?JSON.parse(JSON.stringify(data)):[];
-  const secId={'goleadores':'adm-sg','asistencias':'adm-sa','cleansheets':'adm-sc'}[key];
-
-  el.innerHTML=`
-    <div style="overflow-x:auto">
-      <div style="display:grid;grid-template-columns:2fr 1fr auto;gap:5px;margin-bottom:5px">
-        <span style="color:var(--muted);font-size:.66rem;font-weight:700;text-transform:uppercase">Jugador</span>
-        <span style="color:var(--muted);font-size:.66rem;font-weight:700;text-transform:uppercase">${field}</span>
-        <span></span>
-      </div>
-      <div id="sr-${key}">${(window[k]||[]).map((r,i)=>`
-        <div style="display:grid;grid-template-columns:2fr 1fr auto;gap:5px;margin-bottom:4px">
-          <input class="adm-inp" value="${r.nombre||r.jugador||''}" placeholder="Nombre" oninput="window['${k}'][${i}].nombre=this.value">
-          <input class="adm-inp" type="number" value="${r[field]||0}" oninput="window['${k}'][${i}]['${field}']=+this.value">
-          <button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('${secId}')">✕</button>
-        </div>`).join('')}
-      </div>
-    </div>
-    <div style="margin-top:8px;display:flex;gap:6px">
-      <button class="btn-add" onclick="window['${k}'].push({nombre:'','${field}':0});loadAdmSection('${secId}')">+ Jugador</button>
-      <button class="btn-sv" onclick="saveSEditor('${key}','${field}')">💾 Guardar</button>
-    </div>`;
+  el.innerHTML=`<div style="display:grid;grid-template-columns:2fr 1fr auto;gap:4px;margin-bottom:4px">
+    <span style="color:var(--muted);font-size:.63rem;font-weight:700;text-transform:uppercase">Jugador</span>
+    <span style="color:var(--muted);font-size:.63rem;font-weight:700;text-transform:uppercase">${field}</span>
+    <span></span>
+  </div>
+  ${(window[k]||[]).map((r,i)=>`
+    <div style="display:grid;grid-template-columns:2fr 1fr auto;gap:4px;margin-bottom:3px">
+      <input class="adm-inp" value="${r.nombre||r.jugador||''}" placeholder="Nombre" oninput="window['${k}'][${i}].nombre=this.value">
+      <input class="adm-inp" type="number" value="${r[field]||0}" oninput="window['${k}'][${i}]['${field}']=+this.value">
+      <button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('${secId}')">✕</button>
+    </div>`).join('')}
+  <div style="margin-top:7px;display:flex;gap:5px">
+    <button class="btn-add" onclick="window['${k}'].push({nombre:''});loadAdmSection('${secId}')">+ Jugador</button>
+    <button class="btn-sv" onclick="saveSEditor('${key}','${field}')">Guardar</button>
+  </div>`;
 }
-
 window.saveSEditor=async(key,field)=>{
   const k=`_SR_${key}`;
-  try{
-    await _set(R(`liga/${key}`),(window[k]||[]).map(r=>({nombre:r.nombre||'',[field]:+r[field]||0})));
-    toast('Guardado','ok');
-  }catch(e){ toast('Error','err'); }
+  try{ await fbSet(R(`liga/${key}`),(window[k]||[]).map(r=>({nombre:r.nombre||'',[field]:+r[field]||0}))); toast('Guardado','ok'); }
+  catch(e){ toast('Error','err'); }
 };
 
-// ─ Tarjetas editor ─
 function buildTarEditor(el){
-  const k='_TARJ';
-  window[k]=D.tar.length?JSON.parse(JSON.stringify(D.tar)):[];
-
-  el.innerHTML=`
-    <div>
-      <div style="display:grid;grid-template-columns:2fr 2fr 40px 40px auto;gap:5px;margin-bottom:5px">
-        ${['Jugador','Equipo','🟨','🟥',''].map(l=>`<span style="color:var(--muted);font-size:.66rem;font-weight:700;text-transform:uppercase">${l}</span>`).join('')}
-      </div>
-      ${(window[k]||[]).map((r,i)=>`
-        <div style="display:grid;grid-template-columns:2fr 2fr 40px 40px auto;gap:5px;margin-bottom:4px">
-          <input class="adm-inp" value="${r.jugador||r.nombre||''}" placeholder="Jugador" oninput="window['${k}'][${i}].jugador=this.value">
-          <input class="adm-inp" value="${r.equipo||''}" placeholder="Equipo" oninput="window['${k}'][${i}].equipo=this.value">
-          <input class="adm-inp" type="number" value="${r.amarillas||r.ta||0}" oninput="window['${k}'][${i}].amarillas=+this.value">
-          <input class="adm-inp" type="number" value="${r.rojas||r.tr||0}" oninput="window['${k}'][${i}].rojas=+this.value">
-          <button class="btn-del" onclick="window['${k}'].splice(${i},1);loadAdmSection('adm-tar')">✕</button>
-        </div>`).join('')}
-    </div>
-    <div style="margin-top:8px;display:flex;gap:6px">
-      <button class="btn-add" onclick="window['${k}'].push({jugador:'',equipo:'',amarillas:0,rojas:0});loadAdmSection('adm-tar')">+ Tarjeta</button>
-      <button class="btn-sv" onclick="saveTarEditor()">💾 Guardar</button>
-    </div>`;
+  const k='_TARJ'; window[k]=D.tar.length?JSON.parse(JSON.stringify(D.tar)):[];
+  el.innerHTML=`<div style="display:grid;grid-template-columns:2fr 2fr 38px 38px auto;gap:4px;margin-bottom:4px">
+    ${['Jugador','Equipo','🟨','🟥',''].map(l=>`<span style="color:var(--muted);font-size:.63rem;font-weight:700;text-transform:uppercase">${l}</span>`).join('')}
+  </div>
+  ${(window[k]||[]).map((r,i)=>`
+    <div style="display:grid;grid-template-columns:2fr 2fr 38px 38px auto;gap:4px;margin-bottom:3px">
+      <input class="adm-inp" value="${r.jugador||r.nombre||''}" placeholder="Jugador" oninput="window['_TARJ'][${i}].jugador=this.value">
+      <input class="adm-inp" value="${r.equipo||''}" placeholder="Equipo" oninput="window['_TARJ'][${i}].equipo=this.value">
+      <input class="adm-inp" type="number" value="${r.amarillas||r.ta||0}" oninput="window['_TARJ'][${i}].amarillas=+this.value">
+      <input class="adm-inp" type="number" value="${r.rojas||r.tr||0}" oninput="window['_TARJ'][${i}].rojas=+this.value">
+      <button class="btn-del" onclick="window['_TARJ'].splice(${i},1);loadAdmSection('adm-tar')">✕</button>
+    </div>`).join('')}
+  <div style="margin-top:7px;display:flex;gap:5px">
+    <button class="btn-add" onclick="window['_TARJ'].push({jugador:'',equipo:'',amarillas:0,rojas:0});loadAdmSection('adm-tar')">+ Tarjeta</button>
+    <button class="btn-sv" onclick="saveTarEditor()">Guardar</button>
+  </div>`;
 }
-
 window.saveTarEditor=async()=>{
-  const k='_TARJ';
-  try{
-    await _set(R('liga/tarjetas'),(window[k]||[]).map(r=>({jugador:r.jugador||'',equipo:r.equipo||'',amarillas:+r.amarillas||0,rojas:+r.rojas||0})));
-    toast('Tarjetas guardadas','ok');
-  }catch(e){ toast('Error','err'); }
+  try{ await fbSet(R('liga/tarjetas'),(window['_TARJ']||[]).map(r=>({jugador:r.jugador||'',equipo:r.equipo||'',amarillas:+r.amarillas||0,rojas:+r.rojas||0}))); toast('Tarjetas guardadas','ok'); }
+  catch(e){ toast('Error','err'); }
 };
 
-// ─ Noticias editor ─
 function buildNewsEditor(el){
-  const k='_NEWS';
-  window[k]=D.news.length?JSON.parse(JSON.stringify(D.news)):[];
-
-  function render(){
-    el.innerHTML=`
-      <div>${(window[k]||[]).map((n,i)=>`
-        <div class="nota-row">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
-            <span style="font-size:.76rem;color:var(--gold);font-weight:700">Noticia ${i+1}</span>
-            <button class="btn-del" onclick="window['_NEWS'].splice(${i},1);loadAdmSection('adm-news')">✕ Eliminar</button>
-          </div>
-          <input class="adm-inp" placeholder="Título *" value="${n.titulo||''}" oninput="window['_NEWS'][${i}].titulo=this.value" style="margin-bottom:6px">
-          <textarea class="adm-inp" placeholder="Descripción" rows="3" oninput="window['_NEWS'][${i}].descripcion=this.value" style="margin-bottom:6px;resize:vertical">${n.descripcion||''}</textarea>
-          <div class="r2" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-            <input class="adm-inp" placeholder="URL Imagen" value="${n.imagen||''}" oninput="window['_NEWS'][${i}].imagen=this.value">
-            <input class="adm-inp" placeholder="Link externo" value="${n.link||''}" oninput="window['_NEWS'][${i}].link=this.value">
-            <input class="adm-inp" placeholder="Tag (ej: TRASPASO)" value="${n.tag||''}" oninput="window['_NEWS'][${i}].tag=this.value">
-            <input class="adm-inp" type="date" value="${n.fecha||''}" oninput="window['_NEWS'][${i}].fecha=this.value">
-          </div>
-        </div>`).join('')}
-      </div>
-      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn-add" onclick="window['_NEWS'].push({titulo:'',descripcion:'',imagen:'',link:'',tag:'',fecha:''});loadAdmSection('adm-news')">+ Noticia</button>
-        <button class="btn-sv" onclick="saveNewsEditor()">💾 Guardar todas</button>
-      </div>`;
-  }
-  render();
+  const k='_NEWS'; window[k]=D.news.length?JSON.parse(JSON.stringify(D.news)):[];
+  renderNewsEditor(el);
 }
-
+function renderNewsEditor(el){
+  el.innerHTML=`<div>${(window['_NEWS']||[]).map((n,i)=>`
+    <div class="nota-row">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:.74rem;color:var(--gold);font-weight:700">Noticia ${i+1}</span>
+        <button class="btn-del" onclick="window['_NEWS'].splice(${i},1);loadAdmSection('adm-news')">Eliminar</button>
+      </div>
+      <input placeholder="Titulo *" value="${n.titulo||''}" oninput="window['_NEWS'][${i}].titulo=this.value" style="margin-bottom:5px">
+      <textarea placeholder="Descripcion" rows="3" oninput="window['_NEWS'][${i}].descripcion=this.value" style="margin-bottom:5px">${n.descripcion||''}</textarea>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+        <input placeholder="URL Imagen" value="${n.imagen||''}" oninput="window['_NEWS'][${i}].imagen=this.value">
+        <input placeholder="Link noticia (URL)" value="${n.link||''}" oninput="window['_NEWS'][${i}].link=this.value">
+        <input placeholder="Tag (ej: TRASPASO)" value="${n.tag||''}" oninput="window['_NEWS'][${i}].tag=this.value">
+        <input type="date" value="${n.fecha||''}" oninput="window['_NEWS'][${i}].fecha=this.value">
+      </div>
+    </div>`).join('')}</div>
+  <div style="margin-top:7px;display:flex;gap:5px;flex-wrap:wrap">
+    <button class="btn-add" onclick="window['_NEWS'].push({titulo:'',descripcion:'',imagen:'',link:'',tag:'',fecha:''});loadAdmSection('adm-news')">+ Noticia</button>
+    <button class="btn-sv" onclick="saveNewsEditor()">Guardar todas</button>
+  </div>`;
+}
 window.saveNewsEditor=async()=>{
   try{
-    const clean=(window['_NEWS']||[]).filter(n=>n.titulo).map(n=>({
-      titulo:n.titulo||'',descripcion:n.descripcion||'',imagen:n.imagen||'',
-      link:n.link||'',tag:n.tag||'',fecha:n.fecha||new Date().toISOString().split('T')[0]
-    }));
-    await _set(R('liga/noticias'),clean);
-    toast('Noticias guardadas','ok');
+    const clean=(window['_NEWS']||[]).filter(n=>n.titulo).map(n=>({titulo:n.titulo||'',descripcion:n.descripcion||'',imagen:n.imagen||'',link:n.link||'',tag:n.tag||'',fecha:n.fecha||new Date().toISOString().split('T')[0]}));
+    await fbSet(R('liga/noticias'),clean); toast('Noticias guardadas','ok');
   }catch(e){ toast('Error','err'); }
 };
 
-// ─ Afiliados editor ─
 function buildAfilEditor(el){
-  const k='_AFIL';
-  window[k]=D.afil.length?JSON.parse(JSON.stringify(D.afil)):[];
-
-  function render(){
-    el.innerHTML=`
-      <div>${(window[k]||[]).map((a,i)=>`
-        <div class="nota-row">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
-            <span style="font-size:.76rem;color:var(--gold);font-weight:700">Afiliado ${i+1}</span>
-            <button class="btn-del" onclick="window['_AFIL'].splice(${i},1);loadAdmSection('adm-afil')">✕ Eliminar</button>
-          </div>
-          <input class="adm-inp" placeholder="Nombre *" value="${a.nombre||''}" oninput="window['_AFIL'][${i}].nombre=this.value" style="margin-bottom:6px">
-          <textarea class="adm-inp" placeholder="Descripción" rows="2" oninput="window['_AFIL'][${i}].descripcion=this.value" style="margin-bottom:6px;resize:vertical">${a.descripcion||''}</textarea>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-            <input class="adm-inp" placeholder="URL Imagen" value="${a.imagen||''}" oninput="window['_AFIL'][${i}].imagen=this.value">
-            <input class="adm-inp" placeholder="URL Web" value="${a.url||''}" oninput="window['_AFIL'][${i}].url=this.value">
-            <input class="adm-inp" placeholder="Discord invite code" value="${a.discord||''}" oninput="window['_AFIL'][${i}].discord=this.value">
-          </div>
-        </div>`).join('')}
+  const k='_AFIL'; window[k]=D.afil.length?JSON.parse(JSON.stringify(D.afil)):[];
+  el.innerHTML=`<div>${(window[k]||[]).map((a,i)=>`
+    <div class="nota-row">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:.74rem;color:var(--gold);font-weight:700">Afiliado ${i+1}</span>
+        <button class="btn-del" onclick="window['_AFIL'].splice(${i},1);loadAdmSection('adm-afil')">Eliminar</button>
       </div>
-      <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn-add" onclick="window['_AFIL'].push({nombre:'',descripcion:'',imagen:'',url:'',discord:''});loadAdmSection('adm-afil')">+ Afiliado</button>
-        <button class="btn-sv" onclick="saveAfilEditor()">💾 Guardar todos</button>
-      </div>`;
-  }
-  render();
+      <input placeholder="Nombre *" value="${a.nombre||''}" oninput="window['_AFIL'][${i}].nombre=this.value" style="margin-bottom:5px">
+      <textarea placeholder="Descripcion" rows="2" oninput="window['_AFIL'][${i}].descripcion=this.value" style="margin-bottom:5px">${a.descripcion||''}</textarea>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">
+        <input placeholder="URL Imagen/Logo" value="${a.imagen||''}" oninput="window['_AFIL'][${i}].imagen=this.value">
+        <input placeholder="URL Web" value="${a.url||''}" oninput="window['_AFIL'][${i}].url=this.value">
+        <input placeholder="Codigo Discord (invite)" value="${a.discord||''}" oninput="window['_AFIL'][${i}].discord=this.value">
+      </div>
+    </div>`).join('')}</div>
+  <div style="margin-top:7px;display:flex;gap:5px;flex-wrap:wrap">
+    <button class="btn-add" onclick="window['_AFIL'].push({nombre:'',descripcion:'',imagen:'',url:'',discord:''});loadAdmSection('adm-afil')">+ Afiliado</button>
+    <button class="btn-sv" onclick="saveAfilEditor()">Guardar todos</button>
+  </div>`;
 }
-
 window.saveAfilEditor=async()=>{
   try{
     const clean=(window['_AFIL']||[]).filter(a=>a.nombre).map(a=>({nombre:a.nombre||'',descripcion:a.descripcion||'',imagen:a.imagen||'',url:a.url||'',discord:a.discord||''}));
-    await _set(R('liga/afiliados'),clean);
-    toast('Afiliados guardados','ok');
+    await fbSet(R('liga/afiliados'),clean); toast('Afiliados guardados','ok');
   }catch(e){ toast('Error','err'); }
 };
 
-// ─ Anuncio panel ─
 function buildAnnPanel(el){
-  el.innerHTML=`
-    <p style="color:var(--muted);font-size:.82rem;margin-bottom:10px">El bot recibirá este anuncio y lo enviará al canal configurado en Discord.</p>
-    <textarea id="ann-txt" class="adm-inp" rows="4" placeholder="Escribe el anuncio..." style="resize:vertical;width:100%"></textarea>
-    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
-      <input class="adm-inp" id="ann-titulo" placeholder="Título (opcional)" style="flex:1;min-width:150px">
-      <button class="btn-sv" onclick="sendAnn()">📢 Enviar</button>
-    </div>`;
+  el.innerHTML=`<p style="color:var(--muted);font-size:.8rem;margin-bottom:9px">El bot enviara este anuncio al canal configurado en Discord.</p>
+  <textarea id="ann-txt" class="adm-inp" rows="4" placeholder="Texto del anuncio..." style="resize:vertical;width:100%;margin-bottom:6px"></textarea>
+  <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center">
+    <input class="adm-inp" id="ann-titulo" placeholder="Titulo (opcional)" style="flex:1;min-width:140px">
+    <button class="btn-sv" onclick="sendAnn()">Enviar</button>
+  </div>`;
 }
-
 window.sendAnn=async()=>{
   const txt=document.getElementById('ann-txt')?.value.trim();
   const titulo=document.getElementById('ann-titulo')?.value.trim();
-  if(!txt){ toast('Escribe un anuncio primero','err'); return; }
+  if(!txt){ toast('Escribe un anuncio','err'); return; }
   try{
-    await _push(R('bot/anuncios'),{texto:txt,titulo:titulo||null,fecha:Date.now(),enviado:false});
+    await fbPush(R('bot/anuncios'),{texto:txt,titulo:titulo||null,fecha:Date.now(),enviado:false});
     document.getElementById('ann-txt').value='';
     toast('Anuncio enviado al bot','ok');
-  }catch(e){ toast('Error al enviar','err'); }
+  }catch(e){ toast('Error','err'); }
 };
 
-// ════════════════════════════════════════════════════════════
-//  INIT
-// ════════════════════════════════════════════════════════════
-window.addEventListener('DOMContentLoaded',()=>{
-  if(!window._fbReady) document.addEventListener('fb-ready',()=>buildJSel());
-  else buildJSel();
+// ══ INIT ══════════════════════════════════════════════════════
+window.addEventListener('load', () => {
+  buildJSel();
 });
-function buildJSel(){ buildJSel2 && buildJSel2(); }
-function buildJSel2(){
-  const partidos=currentJDiv==='primera'?D.j1:D.j2;
-  const jornadas=[...new Set(partidos.map(p=>p.jornada||1))].sort((a,b)=>a-b);
-  const sel=document.getElementById('jsel');
-  if(!sel) return;
-  sel.innerHTML=jornadas.length?jornadas.map(j=>`<option value="${j}">Jornada ${j}</option>`):'<option value="1">Jornada 1</option>';
-  renderJornada();
-}
-
-// Override buildJSel with real function
-(function init(){
-  window.buildJSel=function(){
-    const partidos=currentJDiv==='primera'?D.j1:D.j2;
-    const jornadas=[...new Set(partidos.map(p=>p.jornada||1))].sort((a,b)=>a-b);
-    const sel=document.getElementById('jsel');
-    if(!sel) return;
-    const prev=sel.value;
-    sel.innerHTML=jornadas.length?jornadas.map(j=>`<option value="${j}">Jornada ${j}</option>`):'<option value="1">Jornada 1</option>';
-    if(prev&&jornadas.includes(parseInt(prev))) sel.value=prev;
-    renderJornada();
-  };
-})();
 </script>
 </body>
 </html>
